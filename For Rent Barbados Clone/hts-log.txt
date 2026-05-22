@@ -1,0 +1,316 @@
+HTTrack3.49-5 launched on Fri, 22 May 2026 06:16:44 at https://forrentbarbados.com/
+(httrack -iC2 -q -s0 -K4 -r5 -%e3 -m10000 -M500000000 -%c5 -c8 -T30 -R3 https://forrentbarbados.com/ )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+06:16:44	Warning: 	HTML file (205537 bytes) retransferred due to lack of cache: https://forrentbarbados.com/
+06:16:45	Warning: 	HTML file (755 bytes) retransferred due to lack of cache: https://forrentbarbados.com//feed/
+06:16:45	Warning: 	HTML file (1159 bytes) retransferred due to lack of cache: https://forrentbarbados.com/comments/feed/
+06:17:56	Warning: 	HTML file (172588 bytes) retransferred due to lack of cache: https://forrentbarbados.com/availability-search-2/
+06:17:56	Warning: 	HTML file (791 bytes) retransferred due to lack of cache: https://forrentbarbados.com/forrentbarbados-home/
+06:17:56	Warning: 	HTML file (141453 bytes) retransferred due to lack of cache: https://forrentbarbados.com/contact-us/
+06:17:56	Warning: 	HTML file (183020 bytes) retransferred due to lack of cache: https://forrentbarbados.com/volunteer/
+06:17:56	Warning: 	HTML file (199235 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/azzurro-03-3-bed/
+06:17:57	Warning: 	HTML file (204283 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/westmoreland-hill-35-4-bed/
+06:17:59	Warning: 	HTML file (182411 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/the-crane-resort/
+06:17:59	Warning: 	HTML file (196831 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/azzurro-03-2-bed/
+06:18:03	Warning: 	HTML file (145716 bytes) retransferred due to lack of cache: https://forrentbarbados.com/terms-conditions/
+06:18:48	Warning: 	Moved Permanently for https://forrentbarbados.com//feed/
+06:18:48	Warning: 	Redirected link is identical because of 'URL Hack' option: https://forrentbarbados.com//feed/ and https://forrentbarbados.com/feed/
+06:18:48	Warning: 	File has moved from https://forrentbarbados.com//feed/ to https://forrentbarbados.com/feed/
+06:18:48	Error: 	"Not Found" (404) at link https://fonts.gstatic.com/ (from https://forrentbarbados.com/)
+06:18:48	Warning: 	Retry after error -4 (No data (connection closed)) at link https://forrentbarbados.com/wp-content/plugins/formidable/css/formidableforms.css?ver=4161525 (from https://forrentbarbados.com/)
+06:18:48	Warning: 	Retry after error -4 (No data (connection closed)) at link https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/library/header-footer/inc/widgets-css/frontend.css?ver=2.0.3 (from https://forrentbarbados.com/)
+06:19:28	Warning: 	Unexpected 412/416 error (Requested range not satisfiable) for https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/css/global.css?ver=1745846547, 'forrentbarbados.com/wp-content/plugins/aloha-powerpack/css/globala8a8.html' could not be found on disk
+06:19:33	Warning: 	Unexpected 412/416 error (Requested range not satisfiable) for https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.48.0, 'forrentbarbados.com/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.mindff9.html' could not be found on disk
+06:19:35	Warning: 	Unexpected 412/416 error (Requested range not satisfiable) for https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.min.css?ver=4.0.9, 'forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/all.minfb3d.html' could not be found on disk
+06:19:38	Warning: 	Unexpected 412/416 error (Requested range not satisfiable) for https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min.css?ver=4.7.0, 'forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/font-awesome.min1849.html' could not be found on disk
+06:19:38	Warning: 	Unexpected 412/416 error (Requested range not satisfiable) for https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands.css?ver=5.15.3, 'forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/brands52d5.html' could not be found on disk
+06:21:49	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1
+06:21:49	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1 (from https://forrentbarbados.com/)
+06:21:49	Error: 	"Forbidden" (403) at link https://forrentbarbados.com/xmlrpc.php?rsd (from https://forrentbarbados.com/)
+06:21:53	Error: 	"Forbidden" (403) at link https://forrentbarbados.com/xmlrpc.php (from https://forrentbarbados.com/)
+06:22:02	Warning: 	HTML file (801 bytes) retransferred due to lack of cache: https://forrentbarbados.com/?p=3620
+06:22:02	Warning: 	HTML file (217386 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/coral-beach-105/
+06:22:02	Warning: 	HTML file (219721 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/coral-beach-105-2/
+06:22:05	Warning: 	HTML file (183333 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/lantana-44-2-bed/
+06:22:05	Warning: 	HTML file (184728 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/lantana-44-3-bed/
+06:22:05	Warning: 	HTML file (202896 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/turtle-view-3-bed/
+06:22:06	Warning: 	HTML file (197489 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/turtle-view-2-bed/
+06:22:06	Warning: 	HTML file (188756 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/westmoreland-hill-13-2-bed/
+06:22:07	Warning: 	HTML file (193859 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/westmoreland-hill-13-3-bed/
+06:22:07	Warning: 	HTML file (185195 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/westmoreland-hill-2-3-bed/
+06:22:09	Warning: 	HTML file (195810 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/westmoreland-hill-22-4-bed/
+06:22:10	Warning: 	HTML file (199702 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/westmoreland-hill-35-3-bed/
+06:22:10	Warning: 	HTML file (184704 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/brownes-2b-1-bed/
+06:22:11	Warning: 	HTML file (190078 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/jamestown-park-1-2-bed-2/
+06:22:13	Warning: 	HTML file (183762 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/coconut-grove-3-sienna/
+06:22:14	Warning: 	HTML file (185056 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/mullins-reef-3-bed/
+06:22:15	Warning: 	HTML file (203117 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/westmoreland-hills-1-villa-savannah/
+06:22:16	Warning: 	HTML file (198902 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/ixora-101/
+06:22:17	Warning: 	HTML file (187866 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/jamestown-park-1-2-bed/
+06:22:17	Warning: 	Moved Permanently for https://forrentbarbados.com/forrentbarbados-home/
+06:22:17	Warning: 	File has moved from https://forrentbarbados.com/forrentbarbados-home/ to https://forrentbarbados.com/
+06:22:22	Warning: 	HTML file (777 bytes) retransferred due to lack of cache: https://forrentbarbados.com/?p=117
+06:22:27	Warning: 	HTML file (779 bytes) retransferred due to lack of cache: https://forrentbarbados.com/?p=17713
+06:22:30	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/2025/05/AZZ-3-AIRBNB-COVER-605x605.png
+06:22:30	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/2025/05/AZZ-3-AIRBNB-COVER-605x605.png (from https://forrentbarbados.com/)
+06:22:43	Warning: 	HTML file (819 bytes) retransferred due to lack of cache: https://forrentbarbados.com/?p=1146
+06:23:12	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/2025/05/Westmoreland-Hills-35-26-605x605.jpg
+06:23:12	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/2025/05/Westmoreland-Hills-35-26-605x605.jpg (from https://forrentbarbados.com/)
+06:23:17	Warning: 	HTML file (839 bytes) retransferred due to lack of cache: https://forrentbarbados.com/?p=1522
+06:23:48	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/2026/01/01-Balcony-1-Dining-Official-605x605.jpg
+06:23:48	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/2026/01/01-Balcony-1-Dining-Official-605x605.jpg (from https://forrentbarbados.com/)
+06:23:48	Warning: 	Retry after error -4 (No data (connection closed)) at link https://forrentbarbados.com/accommodation/the-crane-resort/ (from https://forrentbarbados.com/)
+06:23:48	Warning: 	HTML file (182411 bytes) retransferred due to lack of cache: https://forrentbarbados.com/accommodation/the-crane-resort/
+06:23:53	Warning: 	HTML file (819 bytes) retransferred due to lack of cache: https://forrentbarbados.com/?p=1148
+06:23:54	Warning: 	Retry after error -4 (No data (connection closed)) at link https://forrentbarbados.com/wp-content/uploads/2025/05/AZZ-3-AIRBNB-COVER-1-605x605.png (from https://forrentbarbados.com/)
+06:23:55	Warning: 	Retry after error -4 (No data (connection closed)) at link https://forrentbarbados.com/wp-content/uploads/2025/05/Airbnb-Logo-2014-scaled.png (from https://forrentbarbados.com/)
+06:23:55	Warning: 	Retry after error -4 (No data (connection closed)) at link https://forrentbarbados.com/wp-content/plugins/formidable/images/ajax_loader.gif (from https://forrentbarbados.com/)
+06:23:59	Warning: 	HTML file (791 bytes) retransferred due to lack of cache: https://forrentbarbados.com/?p=1044
+06:24:01	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/2025/04/L6.png
+06:24:01	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/2025/04/L6.png (from https://forrentbarbados.com/)
+06:24:01	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/2025/04/L7.png
+06:24:01	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/2025/04/L7.png (from https://forrentbarbados.com/)
+06:24:01	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/2025/04/L5.png
+06:24:01	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/2025/04/L5.png (from https://forrentbarbados.com/)
+06:24:01	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/2025/04/L8.png
+06:24:01	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/2025/04/L8.png (from https://forrentbarbados.com/)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/motopress-hotel-booking/vendors/kbwood/datepick/jquery.datepick.min.js?ver=5.0.4
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/motopress-hotel-booking/vendors/kbwood/datepick/jquery.datepick.min.js?ver=5.0.4 (from https://forrentbarbados.com/)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/motopress-hotel-booking/assets/js/public/mphb.min.js?ver=5.0.4
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/motopress-hotel-booking/assets/js/public/mphb.min.js?ver=5.0.4 (from https://forrentbarbados.com/)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=4.0.9
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=4.0.9 (from https://forrentbarbados.com/)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/js/vendor_footer.min.js?ver=1.3
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/js/vendor_footer.min.js?ver=1.3 (from https://forrentbarbados.com/)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/formidable/js/frm.min.js?ver=6.30
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/formidable/js/frm.min.js?ver=6.30 (from https://forrentbarbados.com/)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/elementor-pro/assets/js/elements-handlers.min.js?ver=4.0.4
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/elementor-pro/assets/js/elements-handlers.min.js?ver=4.0.4 (from https://forrentbarbados.com/)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe.min.js?ver=4.1.1-wc.10.7.0
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe.min.js?ver=4.1.1-wc.10.7.0 (from https://forrentbarbados.com/)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-arrows-10.eot
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-arrows-10.eot (from https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/icons.css?ver=2.1.8)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-arrows-10.eot?
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-arrows-10.ttf
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-basic-10.eot
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-basic-10.eot?
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-basic-10.eot? (from https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/icons.css?ver=2.1.8)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-basic-10.woff
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-basic-10.woff (from https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/icons.css?ver=2.1.8)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-basic-10.ttf
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-basic-10.ttf (from https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/icons.css?ver=2.1.8)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-basic-elaboration-10.eot
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-basic-elaboration-10.eot?
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-basic-elaboration-10.eot? (from https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/icons.css?ver=2.1.8)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-basic-elaboration-10.ttf
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-ecommerce-10.eot
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-ecommerce-10.eot?
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-ecommerce-10.eot? (from https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/icons.css?ver=2.1.8)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-ecommerce-10.ttf
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-software-10.eot
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-software-10.eot (from https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/icons.css?ver=2.1.8)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-software-10.eot?
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-software-10.eot? (from https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/icons.css?ver=2.1.8)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-software-10.ttf
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-weather-10.eot
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-weather-10.eot?
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-weather-10.eot? (from https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/icons.css?ver=2.1.8)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/linea/linea-weather-10.ttf
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/travelpack/travelpack.eot
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/travelpack/travelpack.eot?
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/travelpack/travelpack.eot? (from https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/icons.css?ver=2.1.8)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/travelpack/travelpack.woff
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/travelpack/travelpack.woff (from https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/icons.css?ver=2.1.8)
+06:24:04	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/travelpack/travelpack.ttf
+06:24:04	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/travelpack/travelpack.ttf (from https://forrentbarbados.com/wp-content/plugins/aloha-powerpack/assets/icons/icons.css?ver=2.1.8)
+06:24:09	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.ttf
+06:24:09	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.ttf (from https://forrentbarbados.com/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=10.7.0)
+06:24:26	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/2025/05/azzurro5-7-scaled.jpg
+06:24:26	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/2025/05/azzurro5-7-scaled.jpg (from https://forrentbarbados.com/wp-content/uploads/elementor/css/post-198.css?ver=1779405499)
+06:24:26	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-includes/fonts/dashicons.eot?99ac726223c749443b642ce33df8b800
+06:24:26	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-includes/fonts/dashicons.eot?99ac726223c749443b642ce33df8b800 (from https://forrentbarbados.com/wp-includes/css/dashicons.min.css?ver=7.0)
+06:24:26	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-includes/fonts/dashicons.ttf?99ac726223c749443b642ce33df8b800
+06:24:26	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-includes/fonts/dashicons.ttf?99ac726223c749443b642ce33df8b800 (from https://forrentbarbados.com/wp-includes/css/dashicons.min.css?ver=7.0)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/webfonts/fa-solid-900.eot
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/webfonts/fa-solid-900.eot (from https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.css?ver=5.15.3)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/webfonts/fa-solid-900.eot?
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/webfonts/fa-solid-900.eot? (from https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.css?ver=5.15.3)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/webfonts/fa-solid-900.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/webfonts/fa-solid-900.woff2 (from https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.css?ver=5.15.3)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/webfonts/fa-solid-900.woff
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/webfonts/fa-solid-900.woff (from https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.css?ver=5.15.3)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/webfonts/fa-solid-900.ttf
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/webfonts/fa-solid-900.ttf (from https://forrentbarbados.com/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.css?ver=5.15.3)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkc3kawzu.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkc3kawzu.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkankawzu.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkankawzu.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkbxkawzu.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkbxkawzu.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkenkawzu.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkenkawzu.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkahkawzu.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkahkawzu.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkcxkawzu.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkcxkawzu.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkchkawzu.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkchkawzu.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkbnka.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo5cnqeu92fr1mu53zec9_vu3r1gihoszmkbnka.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3gubgee.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3gubgee.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3iubgee.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3iubgee.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3-ubgee.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3-ubgee.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluamawcubgee.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluamawcubgee.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluamaxkubgee.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluamaxkubgee.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3oubgee.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3oubgee.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3kubgee.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3kubgee.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3yuba.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/roboto-kfo7cnqeu92fr1me7ksn66agldtyluama3yuba.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/roboto.css?ver=1745853486)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufa5qw54a.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufa5qw54a.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/robotoslab.css?ver=1745853491)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufj5qw54a.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufj5qw54a.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/robotoslab.css?ver=1745853491)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufo5qw54a.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufo5qw54a.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/robotoslab.css?ver=1745853491)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufd5qw54a.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufd5qw54a.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/robotoslab.css?ver=1745853491)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufn5qu.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/robotoslab-bngmuxzytxpivibgjjsb6ufn5qu.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/robotoslab.css?ver=1745853491)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u-w4bmutphjxsipx-opci.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u-w4bmutphjxsipx-opci.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/lato.css?ver=1745853493)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u_w4bmutphjxsi9w2_gwft.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u_w4bmutphjxsi9w2_gwft.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/lato.css?ver=1745853493)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u8w4bmutphjxsaxc-q.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u8w4bmutphjxsaxc-q.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/lato.css?ver=1745853493)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u_w4bmutphjxsi5wq_gwft.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u_w4bmutphjxsi5wq_gwft.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/lato.css?ver=1745853493)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u_w4bmutphjxsi3wi_gwft.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u_w4bmutphjxsi3wi_gwft.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/lato.css?ver=1745853493)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u8w4bmutphh30axc-q.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u8w4bmutphh30axc-q.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/lato.css?ver=1745853493)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u9w4bmutphh7usswipgq.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u9w4bmutphh7usswipgq.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/lato.css?ver=1745853493)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6uyw4bmutphjx4wxg.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6uyw4bmutphjx4wxg.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/lato.css?ver=1745853493)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u9w4bmutphh6uvswipgq.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u9w4bmutphh6uvswipgq.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/lato.css?ver=1745853493)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u9w4bmutphh50xswipgq.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/lato-s6u9w4bmutphh50xswipgq.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/lato.css?ver=1745853493)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/spinnaker-w8gyh2oyx-i0_rvr6hmx23yk.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/spinnaker-w8gyh2oyx-i0_rvr6hmx23yk.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/spinnaker.css?ver=1745853493)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxiayp8kv8jhgfvrjjlme0tdmpkzsq.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxiayp8kv8jhgfvrjjlme0tdmpkzsq.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxidyp8kv8jhgfvrjjlmv1pvfteoceg.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxidyp8kv8jhgfvrjjlmv1pvfteoceg.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxidyp8kv8jhgfvrjjlm21lvfteoceg.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxidyp8kv8jhgfvrjjlm21lvfteoceg.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxigyp8kv8jhgfvrjjlucxtakpy.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxigyp8kv8jhgfvrjjlucxtakpy.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxidyp8kv8jhgfvrjjlmg1hvfteoceg.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxidyp8kv8jhgfvrjjlmg1hvfteoceg.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxidyp8kv8jhgfvrjjlmr19vfteoceg.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxidyp8kv8jhgfvrjjlmr19vfteoceg.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxidyp8kv8jhgfvrjjlmy15vfteoceg.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxidyp8kv8jhgfvrjjlmy15vfteoceg.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxidyp8kv8jhgfvrjjlm111vfteoceg.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxidyp8kv8jhgfvrjjlm111vfteoceg.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxidyp8kv8jhgfvrjjlm81xvfteoceg.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxidyp8kv8jhgfvrjjlm81xvfteoceg.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxigyp8kv8jhgfvrlptucxtakpy.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxigyp8kv8jhgfvrlptucxtakpy.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxibyp8kv8jhgfvrlfj_z11lfc-k.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxibyp8kv8jhgfvrlfj_z11lfc-k.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxibyp8kv8jhgfvrldz8z11lfc-k.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxibyp8kv8jhgfvrldz8z11lfc-k.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxieyp8kv8jhgfvrjjbecmne.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxieyp8kv8jhgfvrjjbecmne.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxibyp8kv8jhgfvrlgt9z11lfc-k.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxibyp8kv8jhgfvrlgt9z11lfc-k.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxibyp8kv8jhgfvrlej6z11lfc-k.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxibyp8kv8jhgfvrlej6z11lfc-k.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxibyp8kv8jhgfvrlcz7z11lfc-k.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxibyp8kv8jhgfvrlcz7z11lfc-k.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxibyp8kv8jhgfvrldd4z11lfc-k.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxibyp8kv8jhgfvrldd4z11lfc-k.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxibyp8kv8jhgfvrlbt5z11lfc-k.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/poppins-pxibyp8kv8jhgfvrlbt5z11lfc-k.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/poppins.css?ver=1745931986)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtuqjig1_i6t8kchkm459wxrxc7mw9c.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtuqjig1_i6t8kchkm459wxrxc7mw9c.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/montserrat.css?ver=1745853500)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtuqjig1_i6t8kchkm459wxrzs7mw9c.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtuqjig1_i6t8kchkm459wxrzs7mw9c.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/montserrat.css?ver=1745853500)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtuqjig1_i6t8kchkm459wxrxi7mw9c.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtuqjig1_i6t8kchkm459wxrxi7mw9c.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/montserrat.css?ver=1745853500)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtuqjig1_i6t8kchkm459wxrxy7mw9c.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtuqjig1_i6t8kchkm459wxrxy7mw9c.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/montserrat.css?ver=1745853500)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtuqjig1_i6t8kchkm459wxrys7m.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtuqjig1_i6t8kchkm459wxrys7m.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/montserrat.css?ver=1745853500)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wrhyzbi.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wrhyzbi.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/montserrat.css?ver=1745853500)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459w1hyzbi.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459w1hyzbi.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/montserrat.css?ver=1745853500)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wzhyzbi.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wzhyzbi.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/montserrat.css?ver=1745853500)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wdhyzbi.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wdhyzbi.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/montserrat.css?ver=1745853500)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wlhyw.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/montserrat-jtusjig1_i6t8kchkm459wlhyw.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/montserrat.css?ver=1745853500)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc53fwrk3iltcvneqg7ca725jhhknnqk6l0uumjng.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc53fwrk3iltcvneqg7ca725jhhknnqk6l0uumjng.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/inter.css?ver=1745853517)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc53fwrk3iltcvneqg7ca725jhhknnqk6l9uumjng.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc53fwrk3iltcvneqg7ca725jhhknnqk6l9uumjng.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/inter.css?ver=1745853517)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc53fwrk3iltcvneqg7ca725jhhknnqk6l1uumjng.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc53fwrk3iltcvneqg7ca725jhhknnqk6l1uumjng.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/inter.css?ver=1745853517)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc53fwrk3iltcvneqg7ca725jhhknnqk6l6uumjng.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc53fwrk3iltcvneqg7ca725jhhknnqk6l6uumjng.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/inter.css?ver=1745853517)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc53fwrk3iltcvneqg7ca725jhhknnqk6l2uumjng.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc53fwrk3iltcvneqg7ca725jhhknnqk6l2uumjng.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/inter.css?ver=1745853517)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc53fwrk3iltcvneqg7ca725jhhknnqk6l3uumjng.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc53fwrk3iltcvneqg7ca725jhhknnqk6l3uumjng.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/inter.css?ver=1745853517)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc53fwrk3iltcvneqg7ca725jhhknnqk6l5uum.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc53fwrk3iltcvneqg7ca725jhhknnqk6l5uum.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/inter.css?ver=1745853517)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia2jl7suc.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia2jl7suc.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/inter.css?ver=1745853517)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia0zl7suc.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia0zl7suc.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/inter.css?ver=1745853517)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia2zl7suc.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia2zl7suc.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/inter.css?ver=1745853517)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia1pl7suc.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia1pl7suc.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/inter.css?ver=1745853517)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia2pl7suc.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia2pl7suc.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/inter.css?ver=1745853517)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia25l7suc.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia25l7suc.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/inter.css?ver=1745853517)
+06:24:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia1zl7.woff2
+06:24:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/fonts/inter-ucc73fwrk3iltehus_nvmrmxcp50sjia1zl7.woff2 (from https://forrentbarbados.com/wp-content/uploads/elementor/google-fonts/css/inter.css?ver=1745853517)
+06:24:42	Warning: 	Moved Permanently for https://forrentbarbados.com/?p=3620
+06:24:42	Warning: 	File has moved from https://forrentbarbados.com/?p=3620 to https://forrentbarbados.com/availability-search-2/
+06:24:49	Warning: 	HTML file (813 bytes) retransferred due to lack of cache: https://forrentbarbados.com/?p=85
+06:25:20	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/2025/05/21.jpg
+06:25:20	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/2025/05/21.jpg (from https://forrentbarbados.com/availability-search-2/)
+06:25:25	Warning: 	HTML file (821 bytes) retransferred due to lack of cache: https://forrentbarbados.com/?p=1061
+06:25:31	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/2025/05/2-2-scaled.png
+06:25:31	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/2025/05/2-2-scaled.png (from https://forrentbarbados.com/availability-search-2/)
+06:25:31	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/2025/05/AZZ-3-AIRBNB-COVER.png
+06:25:31	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/2025/05/AZZ-3-AIRBNB-COVER.png (from https://forrentbarbados.com/availability-search-2/)
+06:25:31	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/2025/05/AZZ-3-AIRBNB-COVER-1.png
+06:25:31	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/2025/05/AZZ-3-AIRBNB-COVER-1.png (from https://forrentbarbados.com/availability-search-2/)
+06:25:36	Warning: 	HTML file (819 bytes) retransferred due to lack of cache: https://forrentbarbados.com/?p=1503
+06:25:44	Warning: 	Retry after error -4 (No data (connection closed)) at link https://forrentbarbados.com/wp-content/uploads/2025/05/lantana-44-8-scaled.jpg (from https://forrentbarbados.com/availability-search-2/)
+06:25:50	Warning: 	HTML file (819 bytes) retransferred due to lack of cache: https://forrentbarbados.com/?p=1506
+06:25:55	Warning: 	HTML file (821 bytes) retransferred due to lack of cache: https://forrentbarbados.com/?p=1508
+06:26:32	Warning: 	Big file cancelled according to user's preferences: https://forrentbarbados.com/wp-content/uploads/2025/05/5-2-scaled.jpg
+06:26:32	Error: 	"File too big" (-7) at link https://forrentbarbados.com/wp-content/uploads/2025/05/5-2-scaled.jpg (from https://forrentbarbados.com/availability-search-2/)
+06:26:37	Warning: 	HTML file (821 bytes) retransferred due to lack of cache: https://forrentbarbados.com/?p=1509
+06:26:43	Warning: 	HTML file (839 bytes) retransferred due to lack of cache: https://forrentbarbados.com/?p=1512

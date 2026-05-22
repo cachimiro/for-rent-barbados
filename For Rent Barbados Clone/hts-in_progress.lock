@@ -1,0 +1,7 @@
+Mirror in progress since Fri, 22 May 2026 06:16:44 .. please wait!
+httrack -iC2 -q -s0 -K4 -r5 -%e3 -m10000 -M500000000 -%c5 -c8 -T30 -R3 https://forrentbarbados.com/ 
+To pause the engine: create an empty file named 'hts-stop.lock'
+PID=89351
+UID=1000
+GID=1000
+START=1779430604
