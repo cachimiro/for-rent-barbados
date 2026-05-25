@@ -15,8 +15,21 @@ document.addEventListener("DOMContentLoaded", function () {
       if (adultsInput && adultsInput.value) params.set("adults", adultsInput.value);
       if (childrenInput && childrenInput.value) params.set("children", childrenInput.value);
       
-      // Redirect to our local rentals page which we will set up
-      window.location.href = `/availability-search-2/index.html?${params.toString()}`;
+      // Call Supabase Edge Function for availability
+      // Replace YOUR_PROJECT_REF with your actual Supabase project reference
+      const supabaseUrl = "https://bkqnviewrnafvvkqkhej.supabase.co/functions/v1/availability";
+      
+      fetch(`${supabaseUrl}?${params.toString()}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log("Availability data:", data);
+            // Redirect to our local rentals page which we will set up
+            window.location.href = `/availability-search-2/index.html?${params.toString()}`;
+        })
+        .catch(err => {
+            console.error(err);
+            window.location.href = `/availability-search-2/index.html?${params.toString()}`;
+        });
     });
   });
 });
