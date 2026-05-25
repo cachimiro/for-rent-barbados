@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "travelpack";
+  src: url("/fonts/travelpack/travelpack.woff") format("woff"),
+       url("/fonts/travelpack/travelpack.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.travelpack {
+  font-family: "travelpack" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.travelpack-airplane:before  { content: "\f10a"; }
+.travelpack-camera:before    { content: "\f169"; }
+.travelpack-compass:before   { content: "\f148"; }
+
+@layer base {
+  :root {
+    --color-primary:   #042E28;
+    --color-accent:    #191B18;
+    --color-amber:     #FFBC7D;
+    --color-highlight: #EAEAEA;
+    --color-midtone:   #9C9F9B;
+    --color-green-bg:  #f4f6f2;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-spinnaker), sans-serif;
+    color: #363636;
+    background: #fff;
+    font-size: 16px;
+    line-height: 2;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-roboto), sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block bg-brand-primary text-white font-poppins text-sm uppercase tracking-btn px-8 py-3 transition-all duration-300 hover:bg-brand-accent;
+  }
+  .btn-outline {
+    @apply inline-block border border-brand-primary text-brand-primary font-poppins text-sm uppercase tracking-btn px-8 py-3 transition-all duration-300 hover:bg-brand-primary hover:text-white;
+  }
+  .btn-ghost {
+    @apply inline-block text-white font-poppins text-sm uppercase tracking-btn px-8 py-3 border border-white/70 transition-all duration-300 hover:bg-white hover:text-brand-primary;
+  }
+  .section-pad {
+    @apply py-20 px-5 md:px-10 lg:px-[100px];
+  }
+  .section-title {
+    font-family: var(--font-roboto), sans-serif;
+    font-weight: 600;
+    color: #042E28;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    line-height: 1.2;
+  }
+  .card-shadow {
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  }
+}

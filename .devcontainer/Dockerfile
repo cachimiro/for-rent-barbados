@@ -1,5 +1,7 @@
 FROM mcr.microsoft.com/devcontainers/base:2.0.4-noble
 
-# use this Dockerfile to install additional tools you might need, e.g.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-#     && apt-get -y install --no-install-recommends <your-package-list-here>
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y install --no-install-recommends curl ca-certificates \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get -y install --no-install-recommends nodejs \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*

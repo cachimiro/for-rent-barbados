@@ -1,1 +1,14 @@
 For Rent Barbados Clone/hts-cache/
+
+# env
+.env
+.env.local
+.env.*.local
+
+# Next.js
+web/.next/
+web/node_modules/
+web/out/
+
+# OS
+.DS_Store
