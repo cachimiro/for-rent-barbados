@@ -12,3 +12,6 @@ web/out/
 
 # OS
 .DS_Store
+
+# Server
+server/node_modules/
