@@ -1,27 +1,83 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 
 const navLinks = [
-  { label: "Home",         href: "/" },
-  { label: "Rentals",      href: "/rentals" },
-  { label: "Concierge",    href: "/#services" },
-  { label: "Testimonials", href: "/#reviews" },
-  { label: "Contact",      href: "/contact" },
-  { label: "Volunteer",    href: "/volunteer" },
+  { label: "Home",         href: "/",           highlight: false },
+  { label: "Rentals",      href: "/rentals",     highlight: false },
+  { label: "Concierge",    href: "/#services",   highlight: false },
+  { label: "Testimonials", href: "/#reviews",    highlight: false },
+  { label: "Contact",      href: "/contact",     highlight: false },
+  { label: "Volunteer",    href: "/volunteer",   highlight: true  },
 ];
 
+/**
+ * Logo rendered by cropping the central emblem+text portion of the wide SVG.
+ * The full SVG viewBox is 0 0 3089.9 636.8. The stacked "FOR RENT / BARBADOS"
+ * emblem sits roughly in the centre third: x≈900 to x≈2200, full height.
+ * We use an <img> with object-fit:none + object-position to crop, inside a
+ * fixed-size container.
+ */
+function LogoSVG({ height = 70 }: { height?: number }) {
+  // Render the full SVG at a height that makes the centre crop look right.
+  // At height=70, the full width = 70 * (3089.9/636.8) ≈ 339px.
+  // The centre third starts at ~113px and ends at ~226px in rendered space.
+  // We show a 120px-wide window centred on the emblem.
+  const fullWidth = Math.round(height * (3089.9 / 636.8));
+  const cropWidth = Math.round(height * 1.8); // window width shown
+  // Offset: centre of SVG minus half crop width
+  const offsetX = Math.round(fullWidth / 2 - cropWidth / 2);
+
+  return (
+    <div
+      style={{
+        width: cropWidth,
+        height: height,
+        overflow: "hidden",
+        position: "relative",
+        flexShrink: 0,
+      }}
+    >
+      <img
+        src="/assets/logos/LOGO-FRB-10.svg"
+        alt="For Rent Barbados"
+        style={{
+          height: height,
+          width: fullWidth,
+          position: "absolute",
+          left: -offsetX,
+          top: 0,
+          display: "block",
+        }}
+      />
+    </div>
+  );
+}
+
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const navLinkBase: React.CSSProperties = {
+    fontFamily: "var(--font-montserrat), sans-serif",
+    fontSize: 13,
+    fontWeight: 500,
+    textTransform: "uppercase",
+    letterSpacing: "2px",
+    color: "#FFFFFF",
+    padding: "10px 22px",
+    textDecoration: "none",
+    transition: "opacity 0.2s",
+    whiteSpace: "nowrap",
+  };
+
+  const volunteerStyle: React.CSSProperties = {
+    ...navLinkBase,
+    color: "#000000",
+    background: "#FFFFFF",
+    padding: "8px 22px",
+    letterSpacing: "2px",
+  };
 
   return (
     <header
@@ -31,62 +87,48 @@ export default function Header() {
         left: 0,
         right: 0,
         zIndex: 9999,
-        background: "#FFFFFF",
-        transition: "box-shadow 0.3s",
-        boxShadow: scrolled ? "0 2px 8px rgba(0,0,0,0.08)" : "none",
+        background: "transparent",
       }}
     >
+      {/* ── Desktop: two-row centred layout ── */}
       <div
-        style={{
-          maxWidth: 1400,
-          margin: "0 auto",
-          padding: "0 40px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          height: 80,
-        }}
+        className="hidden md:block"
+        style={{ textAlign: "center", paddingTop: 18, paddingBottom: 6 }}
       >
-        {/* Logo */}
-        <Link href="/" style={{ flexShrink: 0, display: "flex", alignItems: "center" }}>
-          <Image
-            src="/assets/logos/LOGO-FRB-10.svg"
-            alt="For Rent Barbados"
-            width={180}
-            height={54}
-            priority
-            style={{ height: 54, width: "auto" }}
-          />
+        {/* Row 1 — Logo centred */}
+        <Link
+          href="/"
+          style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", marginBottom: 8 }}
+        >
+          <LogoSVG height={62} />
         </Link>
 
-        {/* Desktop nav */}
-        <nav style={{ display: "flex", alignItems: "center", gap: 0 }} className="hidden md:flex">
+        {/* Row 2 — Nav centred */}
+        <nav style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              style={{
-                fontFamily: "var(--font-montserrat), sans-serif",
-                fontSize: 14,
-                fontWeight: 500,
-                textTransform: "uppercase",
-                letterSpacing: "1px",
-                color: "#000000",
-                padding: "15px 15px",
-                textDecoration: "none",
-                transition: "color 0.2s",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#042E28")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#000000")}
+              style={link.highlight ? volunteerStyle : navLinkBase}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
             >
               {link.label}
             </Link>
           ))}
         </nav>
+      </div>
 
-        {/* Mobile hamburger */}
+      {/* ── Mobile: logo left + hamburger right ── */}
+      <div
+        className="flex md:hidden"
+        style={{ alignItems: "center", justifyContent: "space-between", padding: "14px 20px" }}
+      >
+        <Link href="/" style={{ display: "flex", alignItems: "center" }}>
+          <LogoSVG height={44} />
+        </Link>
+
         <button
-          className="md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
           style={{ background: "none", border: "none", cursor: "pointer", padding: 8, display: "flex", flexDirection: "column", gap: 5 }}
@@ -98,12 +140,12 @@ export default function Header() {
                 display: "block",
                 width: 24,
                 height: 2,
-                background: "#000",
+                background: "#FFFFFF",
                 transition: "all 0.3s",
                 transform: menuOpen
                   ? i === 0 ? "rotate(45deg) translate(5px, 5px)"
-                  : i === 1 ? "opacity: 0"
-                  : "rotate(-45deg) translate(5px, -5px)"
+                  : i === 2 ? "rotate(-45deg) translate(5px, -5px)"
+                  : "none"
                   : "none",
                 opacity: menuOpen && i === 1 ? 0 : 1,
               }}
@@ -112,7 +154,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* ── Mobile dropdown ── */}
       <div
         className="md:hidden"
         style={{
@@ -134,7 +176,9 @@ export default function Header() {
                 fontWeight: 500,
                 textTransform: "uppercase",
                 letterSpacing: "1px",
-                color: "#FFFFFF",
+                color: link.highlight ? "#000000" : "#FFFFFF",
+                background: link.highlight ? "#FFFFFF" : "transparent",
+                padding: link.highlight ? "8px 20px" : "0",
                 textDecoration: "none",
               }}
             >
