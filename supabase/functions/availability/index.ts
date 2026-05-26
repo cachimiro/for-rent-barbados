@@ -8,10 +8,10 @@ const corsHeaders = {
 const BASE_URL = "https://public.api.hospitable.com/v2";
 
 const PROPERTY_MAP: Record<string, string> = {
-  "azzurro-03-3-bed": "",
-  "azzurro-03-2-bed": "",
+  "azzurro-03-3-bed": "0423f8bd-5bbc-4092-a537-f07be22c80d2",
+  "azzurro-03-2-bed": "0a71c300-9e93-48a0-8c48-1c0cd617dc89",
   "westmoreland-hill-35-4-bed": "c31e2cdb-8698-42f5-bc5d-98253e3a1287",
-  "westmoreland-hill-35-3-bed": "",
+  "westmoreland-hill-35-3-bed": "661a00a4-ba4f-472c-a5e9-66d8fca125b2",
   "coral-beach-105": "df72e9d0-e5e1-4ed0-94f9-3cf478032b19",
   "coral-beach-105-2": "ca5ea27b-9029-4ab7-9699-059f8c250aec",
   "lantana-44-2-bed": "8a432bbc-5bec-47de-8fa7-b6d6821e8958",
@@ -21,15 +21,15 @@ const PROPERTY_MAP: Record<string, string> = {
   "westmoreland-hill-13-2-bed": "b951edd5-a40d-4c6d-ac66-88a764fc1d21",
   "westmoreland-hill-13-3-bed": "1e2448f2-ce2c-4023-8e52-8edde6b7f454",
   "westmoreland-hill-2-3-bed": "",
-  "westmoreland-hill-22-4-bed": "",
+  "westmoreland-hill-22-4-bed": "a1660e90-df2a-41af-93a0-f150b89e2aaf",
   "brownes-2b-1-bed": "9fef34b5-e1fa-4f28-aafe-c3511dbd8f3f",
-  "jamestown-park-1-2-bed": "",
-  "jamestown-park-1-1-bed": "",
+  "jamestown-park-1-2-bed": "658e9590-0f7a-4f0d-bff3-f4aec181c76c",
+  "jamestown-park-1-1-bed": "fe3dc196-5f98-4155-acc7-1654aaa69151",
   "coconut-grove-3-sienna": "",
   "the-crane-resort": "",
   "mullins-reef-3-bed": "",
-  "westmoreland-hills-1-villa-savannah": "",
-  "ixora-101": "",
+  "westmoreland-hills-1-villa-savannah": "35ec9db9-c01d-4bb2-b519-203d06c0c5be",
+  "ixora-101": "80a7147e-eddf-41c8-9681-3e2fa1c6a651",
 };
 
 serve(async (req) => {
