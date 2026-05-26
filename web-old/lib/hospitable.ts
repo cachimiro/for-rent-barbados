@@ -91,7 +91,7 @@ export async function getAvailability(
       }
     }
     return { available, blockedDates: blocked };
-  } catch (err) {
+  } catch {
     return { available: true, blockedDates: [] };
   }
 }
