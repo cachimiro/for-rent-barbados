@@ -58,6 +58,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const link = card.querySelector('.th-port-card-link, a');
         if (!link) return Promise.resolve();
         const href = link.getAttribute('href');
+
+        // Propagate dates to the property page
+        try {
+          const newUrl = new URL(href, window.location.href);
+          newUrl.searchParams.set('checkIn', checkIn);
+          newUrl.searchParams.set('checkOut', checkOut);
+          link.setAttribute('href', newUrl.toString());
+        } catch(e) {}
+
         const match = href.match(/accommodation\/([^\/]+)/);
         if (!match) return Promise.resolve();
         const slug = match[1];
@@ -80,6 +89,19 @@ document.addEventListener("DOMContentLoaded", function () {
         if (loadingMsg) loadingMsg.remove();
       });
     }
+  }
+
+  // Pre-fill dates from URL on individual property pages
+  const globalUrlParams = new URLSearchParams(window.location.search);
+  const gCheckIn = globalUrlParams.get('checkIn');
+  const gCheckOut = globalUrlParams.get('checkOut');
+  if (gCheckIn) {
+      const inputs = document.querySelectorAll('input[name="mphb_check_in_date"]');
+      inputs.forEach(i => i.value = gCheckIn);
+  }
+  if (gCheckOut) {
+      const inputs = document.querySelectorAll('input[name="mphb_check_out_date"]');
+      inputs.forEach(i => i.value = gCheckOut);
   }
 
   // 3. Intercept individual property booking form
