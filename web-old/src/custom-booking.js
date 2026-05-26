@@ -17,6 +17,15 @@ const PROPERTY_MAP = {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
+  // 0. Convert MotoPress text inputs to native datepickers
+  const allDateInputs = document.querySelectorAll('input[id*="mphb_check_in_date"]:not([type="hidden"]), input[id*="mphb_check_out_date"]:not([type="hidden"])');
+  allDateInputs.forEach(input => {
+      input.type = 'date';
+      if (input.id.includes('check_in')) input.name = 'mphb_check_in_date';
+      if (input.id.includes('check_out')) input.name = 'mphb_check_out_date';
+      input.removeAttribute('inputmode');
+  });
+
   // 1. Intercept search forms (e.g. on Homepage)
   const forms = document.querySelectorAll(".mphb_sc_search-form");
   forms.forEach(form => {
