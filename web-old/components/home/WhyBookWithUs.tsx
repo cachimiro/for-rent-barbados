@@ -24,7 +24,7 @@ export default function WhyBookWithUs() {
         <div style={{ marginBottom: 48 }}>
           <h2
             style={{
-              fontFamily: '"Times New Roman", serif',
+              fontFamily: "var(--font-roboto-slab), serif",
               fontSize: "clamp(1.8rem, 3vw, 3rem)",
               fontWeight: 500,
               textTransform: "capitalize",
@@ -37,7 +37,7 @@ export default function WhyBookWithUs() {
           </h2>
           <p
             style={{
-              fontFamily: '"Times New Roman", serif',
+              fontFamily: "var(--font-roboto-slab), serif",
               fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
               fontWeight: 400,
               lineHeight: "20px",
@@ -88,7 +88,7 @@ export default function WhyBookWithUs() {
 
               <h3
                 style={{
-                  fontFamily: '"Times New Roman", serif',
+                  fontFamily: "var(--font-roboto-slab), serif",
                   fontSize: 18,
                   fontWeight: 400,
                   color: "#FFFFFF",

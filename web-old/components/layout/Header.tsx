@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const navLinks = [
@@ -57,6 +57,13 @@ function LogoSVG({ height = 70 }: { height?: number }) {
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinkBase: React.CSSProperties = {
     fontFamily: "var(--font-montserrat), sans-serif",
@@ -87,7 +94,9 @@ export default function Header() {
         left: 0,
         right: 0,
         zIndex: 9999,
-        background: "transparent",
+        background: scrolled ? "#FFFFFF" : "transparent",
+        boxShadow: scrolled ? "0 2px 10px rgba(0,0,0,0.1)" : "none",
+        transition: "all 0.3s ease",
       }}
     >
       {/* ── Desktop: two-row centred layout ── */}
@@ -109,7 +118,10 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              style={link.highlight ? volunteerStyle : navLinkBase}
+              style={{
+                ...link.highlight ? volunteerStyle : navLinkBase,
+                color: scrolled && !link.highlight ? "#333333" : (link.highlight ? "#000000" : "#FFFFFF"),
+              }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.75")}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
             >

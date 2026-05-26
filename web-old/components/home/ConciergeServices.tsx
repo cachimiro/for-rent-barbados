@@ -36,7 +36,7 @@ export default function ConciergeServices() {
         <div style={{ marginBottom: 50 }}>
           <h2
             style={{
-              fontFamily: '"Times New Roman", serif',
+              fontFamily: "var(--font-roboto-slab), serif",
               fontSize: "clamp(1.8rem, 3vw, 3rem)",
               fontWeight: 500,
               textTransform: "capitalize",
@@ -49,7 +49,7 @@ export default function ConciergeServices() {
           </h2>
           <p
             style={{
-              fontFamily: '"Times New Roman", serif',
+              fontFamily: "var(--font-roboto-slab), serif",
               fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
               fontWeight: 400,
               lineHeight: "20px",
@@ -80,7 +80,7 @@ export default function ConciergeServices() {
             >
               <h3
                 style={{
-                  fontFamily: '"Times New Roman", serif',
+                  fontFamily: "var(--font-roboto-slab), serif",
                   fontSize: 20,
                   fontWeight: 700,
                   textTransform: "capitalize",

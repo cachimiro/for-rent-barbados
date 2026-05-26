@@ -12,13 +12,13 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Tagline */}
             <div>
-              <h2 style={{ fontFamily: '"Times New Roman", serif', fontSize: "clamp(1.5rem, 3vw, 48px)", fontWeight: 400, color: "#FFFFFF", lineHeight: 1.2, marginBottom: 4 }}>
+              <h2 style={{ fontFamily: "var(--font-roboto-slab), serif", fontSize: "clamp(1.5rem, 3vw, 48px)", fontWeight: 400, color: "#FFFFFF", lineHeight: 1.2, marginBottom: 4 }}>
                 Stay Updated on New
               </h2>
-              <h2 style={{ fontFamily: '"Times New Roman", serif', fontSize: "clamp(1.5rem, 3vw, 48px)", fontWeight: 900, fontStyle: "italic", color: "#FFFFFF", lineHeight: 1.2, marginBottom: 16 }}>
+              <h2 style={{ fontFamily: "var(--font-roboto-slab), serif", fontSize: "clamp(1.5rem, 3vw, 48px)", fontWeight: 900, fontStyle: "italic", color: "#FFFFFF", lineHeight: 1.2, marginBottom: 16 }}>
                 Homes &amp; Exclusive Deals
               </h2>
-              <p style={{ fontFamily: '"Times New Roman", serif', fontSize: 20, fontWeight: 400, color: "#FFFFFF", lineHeight: "1.5", opacity: 0.85 }}>
+              <p style={{ fontFamily: "var(--font-roboto-slab), serif", fontSize: 20, fontWeight: 400, color: "#FFFFFF", lineHeight: "1.5", opacity: 0.85 }}>
                 Subscribe to our newsletter for early access to new listings, special offers, and the latest editorial insights.
               </p>
             </div>
@@ -69,7 +69,7 @@ export default function Footer() {
         <div style={{ maxWidth: 1400, margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
           {/* Tagline */}
           <div>
-            <span style={{ fontFamily: '"Times New Roman", serif', fontSize: 30, fontWeight: 500, textTransform: "uppercase", letterSpacing: "5px", color: "#000000" }}>
+            <span style={{ fontFamily: "var(--font-roboto-slab), serif", fontSize: 30, fontWeight: 500, textTransform: "uppercase", letterSpacing: "5px", color: "#000000" }}>
               Inspired Stays. Lasting Moments.
             </span>
           </div>

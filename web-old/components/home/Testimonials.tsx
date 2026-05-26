@@ -69,7 +69,7 @@ function ReviewCard({ review }: { review: (typeof reviews)[0] }) {
 
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 12, borderTop: "1px solid #EAEAEA" }}>
         <div>
-          <p style={{ fontFamily: '"Times New Roman", serif', fontSize: 18, fontWeight: 600, color: "#272727", marginBottom: 2 }}>
+          <p style={{ fontFamily: "var(--font-roboto-slab), serif", fontSize: 18, fontWeight: 600, color: "#272727", marginBottom: 2 }}>
             {review.author}
           </p>
           <p style={{ fontFamily: "var(--font-montserrat), sans-serif", fontSize: 12, color: "#272727" }}>
@@ -96,7 +96,7 @@ export default function Testimonials() {
         <div style={{ marginBottom: 48 }}>
           <h2
             style={{
-              fontFamily: '"Times New Roman", serif',
+              fontFamily: "var(--font-roboto-slab), serif",
               fontSize: "clamp(1.8rem, 3vw, 3rem)",
               fontWeight: 500,
               textTransform: "capitalize",
@@ -109,7 +109,7 @@ export default function Testimonials() {
           </h2>
           <p
             style={{
-              fontFamily: '"Times New Roman", serif',
+              fontFamily: "var(--font-roboto-slab), serif",
               fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
               fontWeight: 400,
               lineHeight: "20px",

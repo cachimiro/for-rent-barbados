@@ -1,0 +1,62 @@
+.elementor-1044 .elementor-element.elementor-element-2e837cb:not(.elementor-motion-effects-element-type-background), .elementor-1044 .elementor-element.elementor-element-2e837cb > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#000000;background-image:url("../../2025/04/banner.jpg");background-position:center center;background-repeat:no-repeat;background-size:cover;}.elementor-1044 .elementor-element.elementor-element-2e837cb > .elementor-background-overlay{background-color:#000000;opacity:0.7;transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-1044 .elementor-element.elementor-element-2e837cb > .elementor-container{min-height:400px;}.elementor-1044 .elementor-element.elementor-element-2e837cb{transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin-top:-190px;margin-bottom:0px;}.elementor-1044 .elementor-element.elementor-element-04fe4ec > .elementor-element-populated{margin:0px 0px 70px 0px;--e-column-margin-right:0px;--e-column-margin-left:0px;}.elementor-1044 .elementor-element.elementor-element-664ff29 > .elementor-widget-container{margin:0px 0px 0px 0px;}.elementor-1044 .elementor-element.elementor-element-664ff29{text-align:center;}.elementor-1044 .elementor-element.elementor-element-664ff29 .elementor-heading-title{font-family:"Times New Roman", Sans-serif;font-size:3rem;font-weight:500;text-transform:capitalize;line-height:32px;letter-spacing:0px;color:#FFFFFF;}.elementor-1044 .elementor-element.elementor-element-2fd3769:not(.elementor-motion-effects-element-type-background), .elementor-1044 .elementor-element.elementor-element-2fd3769 > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-color:#000000;}.elementor-1044 .elementor-element.elementor-element-2fd3769{border-style:solid;border-width:0px 0px 3px 0px;border-color:#FFFFFF;transition:background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;padding:60px 60px 60px 60px;}.elementor-1044 .elementor-element.elementor-element-2fd3769 > .elementor-background-overlay{transition:background 0.3s, border-radius 0.3s, opacity 0.3s;}.elementor-1044 .elementor-element.elementor-element-f1e1a2d{text-align:start;font-family:"Montserrat", Sans-serif;font-size:14px;line-height:22px;color:#FFFFFF;}h1.entry-title{margin-top:1px;}@media(max-width:767px){.elementor-1044 .elementor-element.elementor-element-664ff29 .elementor-heading-title{font-size:1.8rem;}.elementor-1044 .elementor-element.elementor-element-2fd3769{padding:0px 0px 0px 0px;}}@media(min-width:1025px){.elementor-1044 .elementor-element.elementor-element-2e837cb:not(.elementor-motion-effects-element-type-background), .elementor-1044 .elementor-element.elementor-element-2e837cb > .elementor-motion-effects-container > .elementor-motion-effects-layer{background-attachment:fixed;}}/* Start custom CSS for text-editor, class: .elementor-element-f1e1a2d *//* Collapse content */
+.elementor-element-71c851c.descrip {
+  position: relative;
+  max-height: 130px;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+/* Fade out at bottom */
+.elementor-element-71c851c.descrip::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  width: 100%;
+  background: linear-gradient(to top, #FFFDFB, transparent);
+  pointer-events: none;
+}
+
+/* Expanded state */
+.elementor-element-71c851c.descrip.expanded {
+  max-height: 2000px;
+}
+
+.elementor-element-71c851c.descrip.expanded::after {
+  display: none;
+}
+
+/* Button style */
+/* Show More Button Style */
+.read-more-toggle {
+  display: block; /* Changed to block so that we can apply margin auto */
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto; /* Centering the button horizontally */
+  text-align: center;
+  color: #4A4A4A;
+  background: transparent;
+  border: 1px solid #4A4A4A;
+  border-radius: 6px;
+  padding: 6px 56px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500; /* Medium font weight */
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.read-more-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #4A4A4A;
+}
+
+/* Focus state */
+.read-more-toggle:focus {
+  outline: none;
+  border-color: #4A4A4A;
+  box-shadow: 0 0 5px rgba(74, 74, 74, 0.6);
+
+}/* End custom CSS */

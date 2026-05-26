@@ -55,7 +55,7 @@ function PropertyCard({ property }: { property: Property }) {
         {/* Title */}
         <h3
           style={{
-            fontFamily: '"Times New Roman", serif',
+            fontFamily: "var(--font-roboto), sans-serif",
             fontSize: 28,
             fontWeight: 400,
             textTransform: "uppercase",
@@ -89,7 +89,7 @@ function PropertyCard({ property }: { property: Property }) {
         {/* Price */}
         <p
           style={{
-            fontFamily: '"Times New Roman", serif',
+            fontFamily: "var(--font-roboto), sans-serif",
             fontSize: 28,
             fontWeight: 400,
             color: "#FFFFFF",
@@ -139,7 +139,7 @@ export default function FeaturedProperties() {
         <div style={{ marginBottom: 50 }}>
           <h2
             style={{
-              fontFamily: '"Times New Roman", serif',
+              fontFamily: "var(--font-roboto), sans-serif",
               fontSize: "clamp(1.8rem, 3vw, 3rem)",
               fontWeight: 500,
               textTransform: "capitalize",
@@ -152,7 +152,7 @@ export default function FeaturedProperties() {
           </h2>
           <p
             style={{
-              fontFamily: '"Times New Roman", serif',
+              fontFamily: "var(--font-spinnaker), sans-serif",
               fontSize: "clamp(1rem, 1.5vw, 1.25rem)",
               fontWeight: 400,
               lineHeight: "20px",

@@ -71,20 +71,20 @@ export default function HeroSection() {
           padding: "0 20px",
         }}
       >
-        {/* Hero headline — Times New Roman, 60px, weight 200 */}
-        <h1
+        {/* Hero headline — Roboto, matching original Elementor */}
+        <h2
           style={{
-            fontFamily: '"Times New Roman", serif',
-            fontSize: "clamp(2rem, 5vw, 60px)",
-            fontWeight: 200,
-            textTransform: "capitalize",
-            lineHeight: 1.1,
+            fontFamily: "var(--font-roboto), sans-serif",
+            fontSize: "clamp(2rem, 5vw, 55px)",
+            fontWeight: 600,
+            lineHeight: 1.2,
             color: "#FFFFFF",
-            marginBottom: 64,
+            marginBottom: 40,
+            textShadow: "0px 2px 10px rgba(0,0,0,0.3)"
           }}
         >
           Escape ordinary, stay extraordinary.
-        </h1>
+        </h2>
 
         {/* Booking form */}
         <form

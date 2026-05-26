@@ -146,7 +146,7 @@ export default function BookingWidget({ property }: BookingWidgetProps) {
       {/* Price heading */}
       <p
         style={{
-          fontFamily: '"Times New Roman", serif',
+          fontFamily: "var(--font-roboto-slab), serif",
           fontSize: 13,
           color: "#888",
           marginBottom: 4,
@@ -158,7 +158,7 @@ export default function BookingWidget({ property }: BookingWidgetProps) {
       </p>
       <p
         style={{
-          fontFamily: '"Times New Roman", serif',
+          fontFamily: "var(--font-roboto-slab), serif",
           fontSize: 32,
           fontWeight: 400,
           color: "#363636",
@@ -238,7 +238,7 @@ export default function BookingWidget({ property }: BookingWidgetProps) {
           </span>
           <span
             style={{
-              fontFamily: '"Times New Roman", serif',
+              fontFamily: "var(--font-roboto-slab), serif",
               fontSize: 18,
               fontWeight: 600,
               color: "#363636",
