@@ -47,6 +47,10 @@ function getStaticPrice(property: Property, checkIn: string, checkOut: string): 
   return summer ? summer.pricePerNight : property.pricing[0]?.pricePerNight ?? null;
 }
 
+import { getBookingUrl } from "@/lib/hospitable";
+
+// ...
+
 export default function BookingWidget({ property }: BookingWidgetProps) {
   const minPrice = Math.min(...property.pricing.map((p) => p.pricePerNight));
 
@@ -75,11 +79,12 @@ export default function BookingWidget({ property }: BookingWidgetProps) {
     const controller = new AbortController();
     setLoading(true);
 
+    const supabaseUrl = "https://bkqnviewrnafvvkqkhej.supabase.co";
     const qs = `?propertySlug=${property.slug}&checkIn=${checkIn}&checkOut=${checkOut}`;
 
     Promise.all([
-      fetch(`/api/pricing${qs}`, { signal: controller.signal }).then((r) => r.json()),
-      fetch(`/api/availability${qs}`, { signal: controller.signal }).then((r) => r.json()),
+      fetch(`${supabaseUrl}/functions/v1/pricing${qs}`, { signal: controller.signal }).then((r) => r.json()),
+      fetch(`${supabaseUrl}/functions/v1/availability${qs}`, { signal: controller.signal }).then((r) => r.json()),
     ])
       .then(([p, a]) => {
         setPricing(p as PricingResult);
@@ -105,12 +110,7 @@ export default function BookingWidget({ property }: BookingWidgetProps) {
 
   const isAvailable = availability ? availability.available : true;
 
-  const bookingUrl = (() => {
-    const base = `/contact`;
-    // When Hospitable IDs are populated, lib/hospitable getBookingUrl will be used server-side.
-    // For now link to contact page.
-    return base;
-  })();
+  const bookingUrl = getBookingUrl(property.slug, checkIn, checkOut, guests);
 
   const labelStyle: React.CSSProperties = {
     display: "block",

@@ -1,0 +1,9 @@
+const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5YTYyNGRmMC0xMmYxLTQ0OGUtYjg4NC00MzY3ODBhNWQzY2QiLCJqdGkiOiI0MDA1MjZkOTFjMDIwNzk4MmE3M2Y2OTVjN2Y0NzQzMzM5ZTg5MzMzMmM4MTU2MTVhOTc3NjAyNDZiNGUwMzkxMjdmZmYxY2U1Mzg2OThjYyIsImlhdCI6MTc3MjkyMTE0MS4xMDYwODEsIm5iZiI6MTc3MjkyMTE0MS4xMDYwODMsImV4cCI6MTgwNDQ1NzE0MS4wOTA5NjcsInN1YiI6IjIxODQ4MiIsInNjb3BlcyI6WyJwYXQ6cmVhZCIsInBhdDp3cml0ZSJdfQ.N1pRGstrEkdG1URE6xoCvwGacEzwPMNj60yGRiz8GUrTCe_gIfC1u-bAIBsCFbS-T_yz5ilITdReRxG_QhgIPxeLmlrB5FLeT4gmv69YhmQnFmfzDRWJzMxVCgHa_V8Eq09pOna_MMypl6KaYDZ8ON4hLE5FpVgwAd_FHL1Dh8O6_oA2rqMX0MacZlCC5_I9pMXNNo5rktk6e0HKGXLXFjVoP3ZgTxCFwmkaTufp6hITIvQzz0d8qWOtZwq5rTxfvG-2rYHxumUMc1eB8PGbclZfWEankXqAWXONwQhjQsTx-ORof6yPxbg6g6vw0dev48bMDfrrOCSpnms9gWZ1d1JPQrFP-m_NbzL2s22EIaR4ZmTgNzzpkmQ5ePLWZu1gUJvnWZtZx6D7ffUN15dsLqxrOtSBnhBrz55FvChEbY7gUV0jCagabL0NCeA8w--h8ZHgP-zX69uWTD-ltasW0YKskVJmPhStHA-Ab29On8qAQkyZqwfjtiHBmUZz7RuhSYc2ZWlEFHrI91CnXqwYyNS4JQEiSVZkzuYR1tesVjGUGibXJTFzU22y1E6nyunXiUeJydH0m3l2XJyYTKQS3HV7euo3gAewFV60zpEkLNkXbPn_3WiG-KGk1RuZ3tfDPTQ-X-mjiC7ZYrWYU9cdadPaFUnLeasAsuU2WRyMR1o';
+const id = '26599d90-09d7-4c5f-b873-5edd07ced505';
+
+async function testV2Calendar() {
+  const res = await fetch(`https://public.api.hospitable.com/v2/properties/${id}/calendar?start_date=2026-06-01&end_date=2026-06-10`, { headers: { 'Authorization': `Bearer ${token}` } });
+  console.log('v2 calendar status:', res.status);
+  console.log('v2 calendar text:', await res.text());
+}
+testV2Calendar();
