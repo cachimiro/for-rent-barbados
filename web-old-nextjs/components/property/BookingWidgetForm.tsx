@@ -4,6 +4,30 @@ import { useState, useEffect } from "react";
 import type { Property } from "@/data/properties";
 import { PROPERTY_MAP } from "@/lib/hospitable";
 
+// Maps property slug → WordPress MotoPress room type ID
+const ROOM_TYPE_MAP: Record<string, number> = {
+  "azzurro-03-2-bed":               1148,
+  "azzurro-03-3-bed":               1146,
+  "brownes-2b-1-bed":               1524,
+  "coral-beach-105":                85,
+  "coral-beach-105-2":              1061,
+  "ixora-101":                      329646,
+  "jamestown-park-1-2-bed":         269504,
+  "jamestown-park-1-2-bed-2":       1526,
+  "lantana-44-2-bed":               1503,
+  "lantana-44-3-bed":               1506,
+  "mullins-reef-3-bed":             19006,
+  "the-crane-resort":               329655,
+  "turtle-view-2-bed":              1509,
+  "turtle-view-3-bed":              1508,
+  "westmoreland-hill-13-2-bed":     1512,
+  "westmoreland-hill-13-3-bed":     1514,
+  "westmoreland-hill-2-3-bed":      1516,
+  "westmoreland-hill-35-3-bed":     1520,
+  "westmoreland-hill-35-4-bed":     1522,
+  "westmoreland-hills-1-villa-savannah": 35666,
+};
+
 const SUPABASE_URL = "https://bkqnviewrnafvvkqkhej.supabase.co";
 const TAX_RATE = 0.175; // 17.5% Barbados VAT + fees
 
@@ -101,12 +125,24 @@ export default function BookingWidgetForm({
   const hasPropertyId = Boolean(PROPERTY_MAP[property.slug]);
 
   const bookingUrl = (() => {
+    const roomTypeId = ROOM_TYPE_MAP[property.slug];
+    if (roomTypeId && checkIn && checkOut) {
+      // Redirect to live WordPress booking-reservation page with MotoPress params
+      const params = new URLSearchParams({
+        mphb_room_type_id:   String(roomTypeId),
+        mphb_check_in_date:  checkIn,
+        mphb_check_out_date: checkOut,
+        mphb_adults:         String(guests),
+        mphb_is_search:      "1",
+      });
+      return `https://forrentbarbados.com/booking-reservation/?${params.toString()}`;
+    }
+    // Fallback: send to contact page if room type not mapped
     const params = new URLSearchParams();
-    params.set("slug", property.slug);
+    params.set("property", property.slug);
     if (checkIn) params.set("checkIn", checkIn);
     if (checkOut) params.set("checkOut", checkOut);
-    if (guests) params.set("guests", String(guests));
-    return `https://forrentbarbados.com/booking-confirmation/?${params.toString()}`;
+    return `https://forrentbarbados.com/contact-us/?${params.toString()}`;
   })();
 
   const labelStyle: React.CSSProperties = {
@@ -291,10 +327,11 @@ export default function BookingWidgetForm({
 
       {/* CTA */}
       <a
-        href={isAvailable === false ? undefined : bookingUrl}
+        href={isAvailable === false ? undefined : (checkIn && checkOut ? bookingUrl : undefined)}
+        onClick={(!checkIn || !checkOut) ? (e) => { e.preventDefault(); alert("Please select check-in and check-out dates on the calendar."); } : undefined}
         style={{
           display: "block",
-          background: isAvailable === false ? "#aaa" : "#1a1a1a",
+          background: isAvailable === false ? "#aaa" : (!checkIn || !checkOut) ? "#888" : "#1a1a1a",
           color: "#FFFFFF",
           fontFamily: "var(--font-poppins), sans-serif",
           fontSize: 13,
@@ -309,7 +346,7 @@ export default function BookingWidgetForm({
           pointerEvents: isAvailable === false ? "none" : "auto",
         }}
       >
-        {!hasPropertyId ? "Contact to Book" : "Confirm Reservation"}
+        {!hasPropertyId ? "Contact to Book" : (!checkIn || !checkOut) ? "Select Dates to Book" : "Book Now"}
       </a>
 
       {!hasPropertyId && (
