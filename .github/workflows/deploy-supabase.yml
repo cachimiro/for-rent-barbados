@@ -12,22 +12,23 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
       - uses: supabase/setup-cli@v1
         with:
           version: latest
-      
+
       - name: Deploy availability function
-        run: supabase functions deploy availability --project-ref bkqnviewrnafvvkqkhej
+        run: supabase functions deploy availability --project-ref bkqnviewrnafvvkqkhej --no-verify-jwt
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
 
       - name: Deploy pricing function
-        run: supabase functions deploy pricing --project-ref bkqnviewrnafvvkqkhej
+        run: supabase functions deploy pricing --project-ref bkqnviewrnafvvkqkhej --no-verify-jwt
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
 
       - name: Deploy calendar function
-        run: supabase functions deploy calendar --project-ref bkqnviewrnafvvkqkhej
+        run: supabase functions deploy calendar --project-ref bkqnviewrnafvvkqkhej --no-verify-jwt
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}

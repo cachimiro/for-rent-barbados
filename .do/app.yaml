@@ -1,0 +1,25 @@
+name: for-rent-barbados
+region: nyc
+static_sites:
+  - name: web
+    source_dir: web-old-nextjs
+    github:
+      repo: cachimiro/for-rent-barbados
+      branch: main
+      deploy_on_push: true
+    build_command: npm run build
+    output_dir: out
+    environment_slug: node-js
+    envs:
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        value: https://bkqnviewrnafvvkqkhej.supabase.co
+        scope: BUILD_TIME
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJrcW52aWV3cm5hZnZ2a3FraGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc1MDUyMDMsImV4cCI6MjA2MzA4MTIwM30.QZfw839K9zACIhO9bCC-1-Aln_g8CcqYnO6hBCQQqnc
+        scope: BUILD_TIME
+    routes:
+      - path: /
+    cors:
+      allow_origins:
+        - prefix: https://forrentbarbados.com
+        - prefix: https://www.forrentbarbados.com
