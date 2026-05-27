@@ -26,3 +26,8 @@ jobs:
         run: supabase functions deploy pricing --project-ref bkqnviewrnafvvkqkhej
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+      - name: Deploy calendar function
+        run: supabase functions deploy calendar --project-ref bkqnviewrnafvvkqkhej
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}

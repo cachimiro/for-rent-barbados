@@ -173,7 +173,7 @@ export default function PropertyDetailPage({
                 </div>
               )}
 
-              {/* Seasonal pricing table */}
+              {/* Seasonal pricing cards */}
               <div style={{ marginBottom: 48 }}>
                 <h2
                   style={{
@@ -186,68 +186,67 @@ export default function PropertyDetailPage({
                 >
                   Seasonal Pricing
                 </h2>
-                <table style={{ width: "100%", borderCollapse: "collapse" }}>
-                  <thead>
-                    <tr style={{ borderBottom: "2px solid #EAEAEA" }}>
-                      {["Season", "Dates", "Price / night"].map((h) => (
-                        <th
-                          key={h}
-                          style={{
-                            fontFamily: "var(--font-poppins), sans-serif",
-                            fontSize: 11,
-                            textTransform: "uppercase",
-                            letterSpacing: "1px",
-                            color: "#888",
-                            textAlign: "left",
-                            padding: "8px 12px 8px 0",
-                          }}
-                        >
-                          {h}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {property.pricing.map((p) => (
-                      <tr
-                        key={p.season}
-                        style={{ borderBottom: "1px solid #EAEAEA" }}
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+                    gap: 16,
+                  }}
+                >
+                  {property.pricing.map((p) => (
+                    <div
+                      key={p.season}
+                      style={{
+                        border: "1px solid #EAEAEA",
+                        padding: "20px 16px",
+                        background: "#FAFAFA",
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontFamily: "var(--font-poppins), sans-serif",
+                          fontSize: 10,
+                          fontWeight: 600,
+                          textTransform: "uppercase",
+                          letterSpacing: "1.5px",
+                          color: "#042E28",
+                          marginBottom: 8,
+                        }}
                       >
-                        <td
+                        {p.label}
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: '"Times New Roman", serif',
+                          fontSize: 22,
+                          fontWeight: 400,
+                          color: "#363636",
+                          marginBottom: 4,
+                        }}
+                      >
+                        USD ${p.pricePerNight.toLocaleString()}
+                        <span
                           style={{
-                            fontFamily: '"Times New Roman", serif',
-                            fontSize: 16,
-                            color: "#363636",
-                            padding: "14px 12px 14px 0",
-                          }}
-                        >
-                          {p.label}
-                        </td>
-                        <td
-                          style={{
-                            fontFamily: "var(--font-montserrat), sans-serif",
-                            fontSize: 13,
+                            fontSize: 12,
                             color: "#888",
-                            padding: "14px 12px 14px 0",
+                            fontFamily: "var(--font-montserrat), sans-serif",
                           }}
                         >
-                          {p.dateRange}
-                        </td>
-                        <td
-                          style={{
-                            fontFamily: '"Times New Roman", serif',
-                            fontSize: 20,
-                            fontWeight: 400,
-                            color: "#363636",
-                            padding: "14px 0",
-                          }}
-                        >
-                          USD ${p.pricePerNight.toLocaleString()}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                          / night
+                        </span>
+                      </p>
+                      <p
+                        style={{
+                          fontFamily: "var(--font-montserrat), sans-serif",
+                          fontSize: 11,
+                          color: "#888",
+                        }}
+                      >
+                        {p.dateRange}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Property reviews */}
