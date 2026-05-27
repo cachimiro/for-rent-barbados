@@ -135,7 +135,7 @@ export async function getPricing(
   }
 }
 
-/** Direct booking URL for a property on Hospitable's hosted checkout. */
+/** Internal booking URL for the self-hosted reservation page. */
 export function getBookingUrl(
   slug: string,
   checkIn?: string,
@@ -145,11 +145,10 @@ export function getBookingUrl(
   const propertyId = PROPERTY_MAP[slug];
   if (!propertyId) return "/contact";
   const params = new URLSearchParams();
-  params.set("propertyId", propertyId);
   params.set("slug", slug);
   if (checkIn) params.set("checkIn", checkIn);
   if (checkOut) params.set("checkOut", checkOut);
   if (guests) params.set("guests", String(guests));
   const qs = params.toString();
-  return `https://forrentbarbados.com/booking-confirmation/${qs ? `?${qs}` : ""}`;
+  return `/booking-reservation${qs ? `?${qs}` : ""}`;
 }
