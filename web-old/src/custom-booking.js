@@ -194,26 +194,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const roomTypeId = ROOM_TYPE_MAP[slug];
       const adults     = (form.querySelector('select[name="mphb_adults"]') || {}).value || "2";
 
-      if (roomTypeId) {
-        // Redirect to the live WordPress booking reservation page with all params
-        // MotoPress accepts: mphb_check_in_date, mphb_check_out_date, mphb_room_type_id, mphb_adults
-        const params = new URLSearchParams({
-          mphb_check_in_date:  checkIn,
-          mphb_check_out_date: checkOut,
-          mphb_room_type_id:   roomTypeId,
-          mphb_adults:         adults,
-          mphb_is_search:      "1"
-        });
-        window.location.href = `${LIVE_SITE}/accommodation/${slug}/?${params.toString()}`;
-      } else {
-        // Property not yet mapped — send to contact page on live site with dates
-        const params = new URLSearchParams({
-          mphb_check_in_date:  checkIn,
-          mphb_check_out_date: checkOut,
-          property:            slug
-        });
-        window.location.href = `${LIVE_SITE}/contact-us/?${params.toString()}`;
-      }
+      // Redirect to the internal booking reservation page (no WordPress needed)
+      const params = new URLSearchParams({
+        slug:     slug,
+        checkIn:  checkIn,
+        checkOut: checkOut,
+        adults:   adults
+      });
+      window.location.href = `/booking-reservation/index.html?${params.toString()}`;
     });
   });
 });
