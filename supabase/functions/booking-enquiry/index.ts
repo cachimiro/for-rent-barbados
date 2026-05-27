@@ -28,7 +28,10 @@ serve(async (req) => {
     } = await req.json();
 
     const resendKey = Deno.env.get("RESEND_API_KEY");
-    const toEmail   = Deno.env.get("BOOKING_EMAIL") ?? "maisha@forrentbarbados.com";
+    // Until forrentbarbados.com is verified at resend.com/domains,
+    // host notification goes to the Resend account owner's email.
+    // After verification, change BOOKING_EMAIL to maisha@forrentbarbados.com.
+    const toEmail   = Deno.env.get("BOOKING_EMAIL") ?? "johannaguirre55@gmail.com";
 
     if (!resendKey) {
       // Log enquiry if Resend not configured — at least don't lose the data
@@ -135,6 +138,8 @@ serve(async (req) => {
 </html>`;
 
     // Send via Resend
+    // Using onboarding@resend.dev as the from address until forrentbarbados.com
+    // is verified as a sending domain at https://resend.com/domains
     const resendRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -142,7 +147,7 @@ serve(async (req) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from:     "For Rent Barbados Bookings <bookings@forrentbarbados.com>",
+        from:     "For Rent Barbados Bookings <onboarding@resend.dev>",
         to:       [toEmail],
         reply_to: email,
         subject,
@@ -167,7 +172,7 @@ serve(async (req) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from:    "For Rent Barbados <hello@forrentbarbados.com>",
+        from:    "For Rent Barbados <onboarding@resend.dev>",
         to:      [email],
         subject: `Your Booking Enquiry – ${property}`,
         html: `
