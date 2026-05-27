@@ -145,9 +145,11 @@ export function getBookingUrl(
   const propertyId = PROPERTY_MAP[slug];
   if (!propertyId) return "/contact";
   const params = new URLSearchParams();
+  params.set("propertyId", propertyId);
+  params.set("slug", slug);
   if (checkIn) params.set("checkIn", checkIn);
   if (checkOut) params.set("checkOut", checkOut);
   if (guests) params.set("guests", String(guests));
   const qs = params.toString();
-  return `https://direct.hospitable.com/property/${propertyId}${qs ? `?${qs}` : ""}`;
+  return `https://forrentbarbados.com/booking-confirmation/${qs ? `?${qs}` : ""}`;
 }
