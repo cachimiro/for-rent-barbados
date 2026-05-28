@@ -254,26 +254,51 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
       }
       #frb-booking-overlay * { box-sizing: border-box; }
       .frb-bk-header {
-        background: #042E28; padding: 14px 40px;
-        display: flex; align-items: center; justify-content: space-between;
+        position: relative; z-index: 2;
+        background: transparent; padding: 0; text-align: center;
       }
-      .frb-bk-header img { height: 36px; }
+      .frb-bk-header-logo {
+        display: block; margin: 0 auto; padding: 20px 0 10px;
+      }
+      .frb-bk-header-logo img { height: 50px; }
+      .frb-bk-nav {
+        display: flex; justify-content: center; align-items: center;
+        gap: 8px; padding: 8px 20px 16px; flex-wrap: wrap;
+      }
+      .frb-bk-nav a {
+        font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500;
+        color: #fff; text-decoration: none; text-transform: uppercase;
+        letter-spacing: 1.5px; padding: 8px 14px; transition: opacity .2s;
+      }
+      .frb-bk-nav a:hover { opacity: .7; }
+      .frb-bk-nav a.frb-nav-outline {
+        border: 1px solid #fff; padding: 6px 18px;
+      }
       .frb-bk-close {
-        background: none; border: none; color: #fff; font-size: 28px;
-        cursor: pointer; font-family: sans-serif; line-height: 1; padding: 4px 12px;
+        position: absolute; top: 16px; right: 20px; background: none; border: none;
+        color: #fff; font-size: 28px; cursor: pointer; font-family: sans-serif;
+        line-height: 1; padding: 4px 12px; z-index: 3;
       }
       .frb-bk-close:hover { opacity: .7; }
-      .frb-bk-hero {
-        background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+      .frb-bk-hero-wrap {
+        background: linear-gradient(rgba(4,46,40,.75), rgba(4,46,40,.65)),
                     url('/wp-content/uploads/2024/07/DJI_0182-scaled.jpg') center/cover no-repeat;
-        padding: 80px 40px; text-align: center; min-height: 220px;
-        display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+        min-height: 280px; display: flex; flex-direction: column;
+      }
+      .frb-bk-hero {
+        flex: 1; display: flex; align-items: center; justify-content: center;
+        padding: 20px 40px 50px; text-align: center;
       }
       .frb-bk-hero h1 {
         font-family: 'Spinnaker', sans-serif; font-size: 42px; font-weight: 400;
-        color: #fff; margin: 0; letter-spacing: 1px;
+        color: #fff; margin: 0; letter-spacing: 1px; font-style: italic;
       }
-      @media (max-width: 600px) { .frb-bk-hero { padding: 50px 20px; min-height: 160px; } .frb-bk-hero h1 { font-size: 28px; } }
+      @media (max-width: 768px) {
+        .frb-bk-nav { gap: 4px; }
+        .frb-bk-nav a { font-size: 10px; padding: 6px 8px; letter-spacing: 1px; }
+        .frb-bk-hero { padding: 20px 20px 40px; }
+        .frb-bk-hero h1 { font-size: 28px; }
+      }
 
       /* MAIN CONTENT GRID */
       .frb-bk-content {
@@ -520,13 +545,22 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
       .frb-bk-footer p { font-family: 'Lato', sans-serif; font-size: 12px; color: rgba(255,255,255,.45); margin: 0; }
     </style>
 
-    <div class="frb-bk-header">
-      <a href="/index.html"><img src="/wp-content/uploads/2021/10/LOGO-FRB-10.svg" alt="For Rent Barbados"></a>
-      <button class="frb-bk-close" id="frb-bk-close-btn">&times;</button>
-    </div>
-
-    <div class="frb-bk-hero">
-      <h1>Booking reservation</h1>
+    <div class="frb-bk-hero-wrap">
+      <div class="frb-bk-header">
+        <button class="frb-bk-close" id="frb-bk-close-btn">&times;</button>
+        <a href="/index.html" class="frb-bk-header-logo"><img src="/wp-content/uploads/2021/10/LOGO-FRB-10.svg" alt="For Rent Barbados"></a>
+        <nav class="frb-bk-nav">
+          <a href="/index.html">Home</a>
+          <a href="/rentals/index.html">Rentals</a>
+          <a href="/concierge/index.html">Concierge</a>
+          <a href="/testimonials/index.html">Testimonials</a>
+          <a href="/contact/index.html">Contact</a>
+          <a href="/volunteer/index.html" class="frb-nav-outline">Volunteer</a>
+        </nav>
+      </div>
+      <div class="frb-bk-hero">
+        <h1>Booking Reservation</h1>
+      </div>
     </div>
 
     <div class="frb-bk-content" id="frb-bk-content">
