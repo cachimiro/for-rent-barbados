@@ -385,6 +385,54 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
       .frb-bk-submit:hover { background: #064e42; }
       .frb-bk-submit:disabled { background: #aaa; cursor: not-allowed; }
 
+      /* ADDITIONAL SERVICES */
+      .frb-svc-title {
+        font-family: 'Lato', sans-serif; font-size: 28px; font-weight: 300;
+        color: #363636; margin: 0 0 20px;
+      }
+      .frb-svc-item {
+        display: flex; align-items: flex-start; gap: 10px; padding: 8px 0;
+        font-family: 'Lato', sans-serif; font-size: 15px; color: #363636;
+      }
+      .frb-svc-item input[type="checkbox"] {
+        width: 18px; height: 18px; margin-top: 3px; cursor: pointer;
+        accent-color: #042E28; flex-shrink: 0;
+      }
+      .frb-svc-item label { cursor: pointer; line-height: 1.5; }
+      .frb-svc-item label em { font-style: italic; color: #555; }
+      .frb-svc-item label strong { font-weight: 700; }
+      .frb-svc-sub {
+        font-family: 'Lato', sans-serif; font-size: 13px; color: #999;
+        margin: 0 0 0 28px; line-height: 1.4;
+      }
+      .frb-svc-sub.red { color: #e74c3c; }
+      .frb-svc-days {
+        display: inline-flex; align-items: center; gap: 6px; margin-left: 8px;
+      }
+      .frb-svc-days input {
+        width: 50px; border: 1px solid #d3d3d3; padding: 4px 6px;
+        font-family: 'Lato', sans-serif; font-size: 14px; text-align: center;
+        outline: none; border-radius: 3px;
+      }
+      .frb-svc-days span { font-family: 'Lato', sans-serif; font-size: 15px; }
+      .frb-svc-link { color: #042E28; font-weight: 700; text-decoration: underline; }
+
+      /* COUPON CODE */
+      .frb-coupon-title {
+        font-family: 'Lato', sans-serif; font-size: 14px; color: #555; margin: 0 0 8px;
+      }
+      .frb-coupon-row { display: flex; gap: 0; margin-bottom: 0; }
+      .frb-coupon-row input {
+        flex: 1; border: 1px solid #d3d3d3; border-radius: 5px 0 0 5px; padding: 10px 14px;
+        font-family: 'Lato', sans-serif; font-size: 14px; outline: none;
+      }
+      .frb-coupon-btn {
+        background: #042E28; color: #fff; border: none; padding: 10px 24px;
+        font-family: 'Lato', sans-serif; font-size: 14px; font-weight: 400;
+        cursor: pointer; border-radius: 0 5px 5px 0; transition: background .2s;
+      }
+      .frb-coupon-btn:hover { background: #064e42; }
+
       /* RIGHT SIDEBAR */
       .frb-bk-sidebar {
         background: #1a1a1a; padding: 48px 40px; color: #fff; align-self: stretch;
@@ -477,6 +525,67 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
           <tr><td>Taxes</td><td id="frb-pr-taxes">—</td></tr>
           <tr class="frb-pr-total"><td>Total</td><td id="frb-pr-grand-total">Loading…</td></tr>
         </table>
+
+        <hr class="frb-pr-divider">
+
+        <!-- CHOOSE ADDITIONAL SERVICES -->
+        <h2 class="frb-svc-title">Choose Additional Services</h2>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-picnics"><label for="frb-svc-picnics">Personalized Picnics <em>(Price on Request)</em></label></div>
+        <p class="frb-svc-sub">Kids Movie Night | Kids Luxury Picnic | Adults Movie Night | Adults Luxury Picnic</p>
+        <p class="frb-svc-sub">Starting from: $385 USD</p>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-staging"><label for="frb-svc-staging">Home/Villa Staging <em>(Price on Request)</em></label></div>
+        <p class="frb-svc-sub">Professional 1-2 hour staging | Kitchen, Bedroom, Living Room, Bathroom &amp; Dining — perfect for special occasions</p>
+        <p class="frb-svc-sub">Starting from: $485 BBD</p>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-nails"><label for="frb-svc-nails">Nails <em>(Price on Request)</em></label></div>
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-massage"><label for="frb-svc-massage">Massage <em>(Price on Request)</em></label></div>
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-hair"><label for="frb-svc-hair">Hair Removal <em>(Price on Request)</em></label></div>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-jetcar"><label for="frb-svc-jetcar">Jet Car <em>(Price on Request)</em></label></div>
+        <p class="frb-svc-sub">1 passenger + pro driver, $125/15min, $250/30min, $450/hr</p>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-yacht-private"><label for="frb-svc-yacht-private">Unseen Barbados Yacht – Private Coastal Charters <em>(Price on Request)</em></label></div>
+        <p class="frb-svc-sub">Starting from: $500 USD / HR | MINIMUM 4 RENTAL</p>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-yacht-shared"><label for="frb-svc-yacht-shared">Unseen Boat Yacht – Shared Charter <em>(Price on Request)</em></label></div>
+        <p class="frb-svc-sub">Starting from: Adults $200 / Children $100 USD | 4 HR Rental</p>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-cot"><label for="frb-svc-cot">Pack and Play (Travel Cot) <strong>($10 / Per Day)</strong></label></div>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-reservations"><label for="frb-svc-reservations">Reservations &amp; Bookings <em>(Price on Request)</em></label></div>
+        <p class="frb-svc-sub">Restaurants, Boat Trips, Excursions &amp; Activities etc</p>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-chef"><label for="frb-svc-chef">Private Chef / Cook Services <em>(Price on Request)</em></label></div>
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-grocery"><label for="frb-svc-grocery">Grocery Shopping &amp; Delivery <em>(Price on Request)</em></label></div>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-airport-out"><label for="frb-svc-airport-out">Property to Airport Transfers ( <a href="https://forrentbarbados.com/airport-transfers/" target="_blank" class="frb-svc-link">Fill Booking Form</a> )</label></div>
+        <p class="frb-svc-sub red">Please visit the above link to fill out the form for Airport Transfers</p>
+        <p class="frb-svc-sub">You won't be charged yet.</p>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-airport-in"><label for="frb-svc-airport-in">Airport to Property Transfers ( <a href="https://forrentbarbados.com/airport-transfers/" target="_blank" class="frb-svc-link">Fill Booking Form</a> )</label></div>
+        <p class="frb-svc-sub red">Please visit the above link to fill out the form for Airport Transfers</p>
+        <p class="frb-svc-sub">You won't be charged yet.</p>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-fasttrack"><label for="frb-svc-fasttrack">Fast Track Services ( <a href="https://forrentbarbados.com/fast-track-services/" target="_blank" class="frb-svc-link">Fill Booking Form</a> )</label></div>
+        <p class="frb-svc-sub red">Please visit the above link to fill out the form for Fast Track Services</p>
+        <p class="frb-svc-sub">You won't be charged yet.</p>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-car-suv"><label for="frb-svc-car-suv">Car Rental: SUV <em>(Price on Request)</em> ×</label><span class="frb-svc-days"><input type="number" value="${nights}" min="1" id="frb-svc-suv-days"><span>day(s)</span></span></div>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-car-sedan"><label for="frb-svc-car-sedan">Car Rental: Sedan <em>(Price on Request)</em> ×</label><span class="frb-svc-days"><input type="number" value="${nights}" min="1" id="frb-svc-sedan-days"><span>day(s)</span></span></div>
+
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-housekeeping"><label for="frb-svc-housekeeping">Additional housekeeping <strong>($90 / Per Day)</strong> ×</label><span class="frb-svc-days"><input type="number" value="1" min="1" id="frb-svc-hk-days"><span>day(s)</span></span></div>
+
+        <hr class="frb-pr-divider">
+
+        <!-- COUPON CODE -->
+        <p class="frb-coupon-title">Coupon Code:</p>
+        <div class="frb-coupon-row">
+          <input type="text" id="frb-coupon" placeholder="">
+          <button type="button" class="frb-coupon-btn" id="frb-coupon-apply">Apply</button>
+        </div>
 
         <hr class="frb-pr-divider">
 
@@ -649,6 +758,21 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
     btn.disabled = true;
     btn.textContent = "Processing…";
 
+    // Collect selected services
+    const serviceIds = ['picnics','staging','nails','massage','hair','jetcar','yacht-private','yacht-shared','cot','reservations','chef','grocery','airport-out','airport-in','fasttrack','car-suv','car-sedan','housekeeping'];
+    const selectedServices = [];
+    serviceIds.forEach(id => {
+      const cb = document.getElementById('frb-svc-' + id);
+      if (cb && cb.checked) {
+        let svc = cb.nextElementSibling ? cb.nextElementSibling.textContent.trim() : id;
+        if (id === 'car-suv') svc += ' × ' + (document.getElementById('frb-svc-suv-days')?.value || nights) + ' day(s)';
+        if (id === 'car-sedan') svc += ' × ' + (document.getElementById('frb-svc-sedan-days')?.value || nights) + ' day(s)';
+        if (id === 'housekeeping') svc += ' × ' + (document.getElementById('frb-svc-hk-days')?.value || 1) + ' day(s)';
+        selectedServices.push(svc);
+      }
+    });
+    const couponCode = document.getElementById('frb-coupon')?.value?.trim() || '';
+
     const payload = {
       firstName: document.getElementById("frb-firstName").value.trim(),
       lastName:  document.getElementById("frb-lastName").value.trim(),
@@ -660,6 +784,8 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
       message:   document.getElementById("frb-message").value.trim(),
       property:  propertyName,
       checkIn, checkOut, nights, totalWithTax, deposit50,
+      services: selectedServices,
+      coupon: couponCode,
     };
 
     try {
