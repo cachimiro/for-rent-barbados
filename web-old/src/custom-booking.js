@@ -281,7 +281,7 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
       }
       .frb-bk-close:hover { opacity: .7; }
       .frb-bk-hero-wrap {
-        background: linear-gradient(rgba(4,46,40,.75), rgba(4,46,40,.65)),
+        background: linear-gradient(rgba(15,30,55,.50), rgba(15,30,55,.45)),
                     url('/wp-content/uploads/2025/04/banner.jpg') center/cover no-repeat;
         min-height: 280px; display: flex; flex-direction: column;
       }
