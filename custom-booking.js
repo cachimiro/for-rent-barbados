@@ -224,22 +224,30 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
   const adults = parseInt(adultsCount) || 2;
 
   const fmtDate = (d) => {
-    try { return new Date(d + "T00:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }); }
+    try { return new Date(d + "T00:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }); }
     catch { return d; }
   };
 
-  // Build adults options
-  let adultsOpts = "";
-  for (let i = 1; i <= 12; i++) {
-    adultsOpts += `<option value="${i}" ${i === adults ? "selected" : ""}>${i}</option>`;
+  // Generate per-night date rows
+  let dateRows = "";
+  const ci = new Date(checkIn + "T00:00:00");
+  for (let i = 0; i < nights; i++) {
+    const dt = new Date(ci.getTime() + i * 86400000);
+    const label = dt.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+    dateRows += `<tr class="frb-pr-date"><td>${label}</td><td id="frb-night-${i}">—</td></tr>`;
   }
+
+  // Country options
+  const countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon","Canada","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Korea (North)","Korea (South)","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Macedonia","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
+  let countryOpts = '<option value="">Select country...</option>';
+  countries.forEach(c => { countryOpts += `<option value="${c}">${c}</option>`; });
 
   // Create overlay
   const overlay = document.createElement("div");
   overlay.id = "frb-booking-overlay";
   overlay.innerHTML = `
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Spinnaker&family=Montserrat:wght@300;400;500;600&family=Roboto+Slab:wght@300;400;500&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Spinnaker&family=Montserrat:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;500&family=Lato:wght@300;400;700&display=swap');
       #frb-booking-overlay {
         position: fixed; top: 0; left: 0; right: 0; bottom: 0;
         z-index: 99999; background: #fff; overflow-y: auto;
@@ -258,119 +266,173 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
       .frb-bk-hero {
         background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
                     url('/wp-content/uploads/2024/07/DJI_0182-scaled.jpg') center/cover no-repeat;
-        padding: 80px 40px; text-align: center; min-height: 200px;
+        padding: 80px 40px; text-align: center; min-height: 220px;
         display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
       }
       .frb-bk-hero h1 {
         font-family: 'Spinnaker', sans-serif; font-size: 42px; font-weight: 400;
-        color: #fff; margin: 0; letter-spacing: 1px; text-transform: none;
+        color: #fff; margin: 0; letter-spacing: 1px;
       }
-      @media (max-width: 600px) { .frb-bk-hero { padding: 50px 20px; } .frb-bk-hero h1 { font-size: 28px; } }
+      @media (max-width: 600px) { .frb-bk-hero { padding: 50px 20px; min-height: 160px; } .frb-bk-hero h1 { font-size: 28px; } }
+
+      /* MAIN CONTENT GRID */
       .frb-bk-content {
         display: grid; grid-template-columns: 3fr 2fr; gap: 0;
         max-width: 1400px; margin: 0 auto;
       }
       @media (max-width: 960px) { .frb-bk-content { grid-template-columns: 1fr; } }
-      .frb-bk-form {
-        padding: 48px 60px 60px; background: #fff;
+
+      /* LEFT COLUMN */
+      .frb-bk-left { padding: 40px 60px 60px; background: #fff; }
+      @media (max-width: 600px) { .frb-bk-left { padding: 24px 20px 40px; } }
+
+      /* PRICE BREAKDOWN TABLE */
+      .frb-pr-title {
+        font-family: 'Lato', sans-serif; font-size: 28px; font-weight: 300;
+        color: #363636; margin: 0 0 24px; line-height: 1.3;
       }
-      @media (max-width: 600px) { .frb-bk-form { padding: 32px 20px 40px; } }
-      .frb-bk-form h2 {
-        font-family: 'Roboto Slab', serif; font-size: 22px; font-weight: 400;
-        color: #363636; margin: 0 0 28px;
+      .frb-pr-prop {
+        display: flex; justify-content: space-between; align-items: baseline;
+        padding: 8px 0; border-bottom: 1px solid #eee; margin-bottom: 4px;
       }
-      .frb-bk-row { margin-bottom: 20px; }
-      .frb-bk-row label {
-        display: block; font-family: 'Montserrat', sans-serif; font-size: 12px;
-        font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
-        color: #6c6c6c; margin-bottom: 8px;
+      .frb-pr-prop-name {
+        font-family: 'Lato', sans-serif; font-size: 15px; color: #363636;
       }
-      .frb-bk-row input, .frb-bk-row select, .frb-bk-row textarea {
-        width: 100%; border: 1px solid #d3d3d3; padding: 12px 14px;
-        font-family: 'Montserrat', sans-serif; font-size: 14px; color: #363636;
-        outline: none; background: #fff; border-radius: 0; transition: border-color .2s;
+      .frb-pr-prop-price {
+        font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 400; color: #363636;
       }
-      .frb-bk-row textarea { resize: vertical; min-height: 90px; }
-      .frb-bk-row input:focus, .frb-bk-row select:focus, .frb-bk-row textarea:focus { border-color: #042E28; }
-      .frb-bk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-      @media (max-width: 500px) { .frb-bk-grid { grid-template-columns: 1fr; } }
-      .frb-bk-summary {
-        background: #f7f7f7; border: 1px solid #eaeaea; padding: 24px 28px; margin: 0 0 32px 0;
-        border-radius: 2px;
+      .frb-pr-rate {
+        font-family: 'Lato', sans-serif; font-size: 13px; color: #888; margin: 4px 0 12px;
       }
-      .frb-bk-summary h3 {
-        font-family: 'Roboto Slab', serif; font-size: 16px; font-weight: 400;
-        color: #363636; margin: 0 0 16px; padding-bottom: 12px;
-        border-bottom: 1px solid #eaeaea;
+      .frb-pr-table {
+        width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif; font-size: 14px;
+        margin-bottom: 0;
       }
-      .frb-bk-srow { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; font-size: 13px; font-family: 'Montserrat', sans-serif; color: #555; }
-      .frb-bk-srow .val { font-weight: 600; color: #363636; }
-      .frb-bk-total { margin-top: 12px; padding-top: 12px; border-top: 1px solid #eaeaea; font-size: 15px; }
-      .frb-bk-total .val { color: #042E28; }
-      .frb-bk-deposit { font-size: 13px; margin-top: 4px; }
-      .frb-bk-deposit .val { color: #FFBC7D; }
+      .frb-pr-table td { padding: 6px 0; color: #555; }
+      .frb-pr-table td:last-child { text-align: right; }
+      .frb-pr-table tr.frb-pr-bold td { font-weight: 700; color: #363636; padding-top: 10px; }
+      .frb-pr-table tr.frb-pr-header td {
+        font-weight: 700; color: #363636; padding-top: 16px; padding-bottom: 6px;
+        border-bottom: 1px solid #eee; font-size: 13px;
+      }
+      .frb-pr-table tr.frb-pr-total td {
+        font-weight: 700; color: #363636; font-size: 15px; padding-top: 12px;
+        border-top: 2px solid #363636;
+      }
+      .frb-pr-divider { border: none; border-top: 1px solid #eee; margin: 24px 0; }
+
+      /* YOUR INFORMATION SECTION */
+      .frb-info-title {
+        font-family: 'Lato', sans-serif; font-size: 28px; font-weight: 300;
+        color: #363636; margin: 0 0 8px;
+      }
+      .frb-info-req {
+        font-family: 'Lato', sans-serif; font-size: 13px; color: #888; margin: 0 0 24px;
+      }
+      .frb-field { margin-bottom: 24px; }
+      .frb-field label {
+        display: block; font-family: 'Lato', sans-serif; font-size: 14px;
+        color: #555; margin-bottom: 8px;
+      }
+      .frb-field input, .frb-field select, .frb-field textarea {
+        width: 100%; border: 1px solid #d3d3d3; border-radius: 5px; padding: 12px 14px;
+        font-family: 'Lato', sans-serif; font-size: 15px; color: #363636;
+        outline: none; background: #fff; transition: border-color .2s;
+        -webkit-appearance: none; appearance: none;
+      }
+      .frb-field select {
+        background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") no-repeat right 14px center;
+        padding-right: 36px;
+      }
+      .frb-field textarea { resize: vertical; min-height: 120px; }
+      .frb-field input:focus, .frb-field select:focus, .frb-field textarea:focus { border-color: #042E28; }
+
+      /* PAYMENT METHOD */
+      .frb-pay-title {
+        font-family: 'Lato', sans-serif; font-size: 28px; font-weight: 300;
+        color: #363636; margin: 0 0 20px;
+      }
+      .frb-pay-method {
+        font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700; color: #363636;
+        margin: 0 0 4px;
+      }
+      .frb-pay-desc {
+        font-family: 'Lato', sans-serif; font-size: 14px; color: #888; margin: 0 0 0;
+      }
+      .frb-pay-total-row {
+        display: flex; justify-content: space-between; align-items: baseline;
+        padding: 20px 0; margin: 24px 0;
+        border-top: 1px solid #eee; border-bottom: 1px solid #eee;
+      }
+      .frb-pay-total-label { font-family: 'Lato', sans-serif; font-size: 16px; color: #363636; }
+      .frb-pay-total-val { font-family: 'Lato', sans-serif; font-size: 18px; font-weight: 700; color: #363636; }
+      .frb-terms-row {
+        display: flex; align-items: flex-start; gap: 10px; margin: 24px 0 28px;
+        font-family: 'Lato', sans-serif; font-size: 14px; color: #555;
+      }
+      .frb-terms-row input[type="checkbox"] {
+        width: 18px; height: 18px; margin-top: 2px; cursor: pointer;
+        accent-color: #042E28; flex-shrink: 0;
+      }
+      .frb-terms-row a { color: #363636; font-weight: 700; text-decoration: underline; }
       .frb-bk-submit {
-        display: block; width: 100%; background: #151515; color: #fff; border: none;
-        font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 500;
-        text-transform: uppercase; letter-spacing: 3px; text-align: center;
-        padding: 16px 20px; cursor: pointer; transition: background .2s; margin-top: 8px;
+        display: block; width: 100%; max-width: 560px;
+        background: #042E28; color: #fff; border: none;
+        font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 400;
+        text-align: center; padding: 16px 20px; cursor: pointer;
+        border-radius: 5px; transition: background .2s; margin-top: 0;
       }
-      .frb-bk-submit:hover { background: #333; }
+      .frb-bk-submit:hover { background: #064e42; }
       .frb-bk-submit:disabled { background: #aaa; cursor: not-allowed; }
 
-      /* RIGHT SIDEBAR — dark with accordions */
+      /* RIGHT SIDEBAR */
       .frb-bk-sidebar {
         background: #1a1a1a; padding: 48px 40px; color: #fff; align-self: stretch;
       }
-      @media (max-width: 600px) { .frb-bk-sidebar { padding: 32px 20px; } }
-      .frb-bk-sidebar-title {
-        font-family: 'Spinnaker', sans-serif; font-size: 20px; font-weight: 400;
-        color: #fff; margin: 0 0 28px; letter-spacing: 0.5px;
-      }
-      .frb-bk-acc { border-bottom: 1px solid rgba(255,255,255,.1); }
+      @media (max-width: 960px) { .frb-bk-sidebar { padding: 32px 20px; } }
+      .frb-bk-acc { border-bottom: 1px solid rgba(255,255,255,.12); }
+      .frb-bk-acc:first-child { border-top: 1px solid rgba(255,255,255,.12); }
       .frb-bk-acc-head {
         display: flex; justify-content: space-between; align-items: center;
-        padding: 16px 0; cursor: pointer; user-select: none;
+        padding: 18px 0; cursor: pointer; user-select: none;
       }
-      .frb-bk-acc-head span {
-        font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
-        color: rgba(255,255,255,.85); letter-spacing: 0.3px;
+      .frb-bk-acc-head span:first-child {
+        font-family: 'Lato', sans-serif; font-size: 15px; font-weight: 700;
+        color: #fff; letter-spacing: 0.3px;
       }
       .frb-bk-acc-icon {
-        font-family: sans-serif; font-size: 18px; font-weight: 300;
-        color: rgba(255,255,255,.5); transition: transform .2s; line-height: 1;
+        font-size: 18px; font-weight: 300; width: 20px; text-align: center;
+        color: rgba(255,255,255,.6); line-height: 1;
       }
       .frb-bk-acc-body {
-        max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s ease;
-        padding: 0 0;
+        max-height: 0; overflow: hidden; transition: max-height .3s ease;
       }
-      .frb-bk-acc-body.open { max-height: 500px; padding: 0 0 16px; }
+      .frb-bk-acc-body.open { max-height: 500px; }
       .frb-bk-acc-body ul {
-        list-style: disc; padding-left: 18px; margin: 0;
+        list-style: disc; padding: 0 0 18px 20px; margin: 0;
       }
       .frb-bk-acc-body li {
-        font-family: 'Montserrat', sans-serif; font-size: 13px; line-height: 1.9;
-        color: rgba(255,255,255,.6); margin-bottom: 2px;
+        font-family: 'Lato', sans-serif; font-size: 14px; line-height: 1.9;
+        color: rgba(255,255,255,.7); margin-bottom: 0;
       }
 
+      /* CONFIRMATION */
       .frb-bk-confirm { text-align: center; padding: 60px 20px; grid-column: 1 / -1; }
       .frb-bk-confirm .chk {
         width: 64px; height: 64px; border-radius: 50%; background: #042E28;
         display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;
       }
-      .frb-bk-confirm h2 { font-family: 'Roboto Slab', serif; font-size: 26px; font-weight: 400; color: #363636; margin: 0 0 12px; }
-      .frb-bk-confirm p { font-size: 14px; line-height: 1.8; color: #888; max-width: 500px; margin: 0 auto 24px; font-family: 'Montserrat', sans-serif; }
+      .frb-bk-confirm h2 { font-family: 'Lato', sans-serif; font-size: 28px; font-weight: 300; color: #363636; margin: 0 0 12px; }
+      .frb-bk-confirm p { font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.8; color: #888; max-width: 500px; margin: 0 auto 24px; }
       .frb-bk-confirm .btn-back {
         display: inline-block; background: #042E28; color: #fff;
-        font-family: 'Montserrat', sans-serif; font-size: 12px; text-transform: uppercase;
-        letter-spacing: 3px; padding: 14px 40px; text-decoration: none; transition: opacity .2s;
+        font-family: 'Lato', sans-serif; font-size: 14px;
+        padding: 14px 40px; text-decoration: none; border-radius: 5px; transition: background .2s;
       }
-      .frb-bk-confirm .btn-back:hover { opacity: .85; }
+      .frb-bk-confirm .btn-back:hover { background: #064e42; }
 
-      .frb-bk-footer {
-        background: #042E28; padding: 32px 40px; text-align: center;
-      }
-      .frb-bk-footer p { font-family: 'Montserrat', sans-serif; font-size: 12px; color: rgba(255,255,255,.45); margin: 0; }
+      .frb-bk-footer { background: #042E28; padding: 32px 40px; text-align: center; }
+      .frb-bk-footer p { font-family: 'Lato', sans-serif; font-size: 12px; color: rgba(255,255,255,.45); margin: 0; }
     </style>
 
     <div class="frb-bk-header">
@@ -383,45 +445,76 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
     </div>
 
     <div class="frb-bk-content" id="frb-bk-content">
-      <!-- LEFT: Form + Summary -->
-      <div class="frb-bk-form">
-        <div class="frb-bk-summary">
-          <h3>Booking Summary</h3>
-          <div class="frb-bk-srow"><span class="lbl">Property</span><span class="val">${propertyName}</span></div>
-          <div class="frb-bk-srow"><span class="lbl">Check-in</span><span class="val">${fmtDate(checkIn)}</span></div>
-          <div class="frb-bk-srow"><span class="lbl">Check-out</span><span class="val">${fmtDate(checkOut)}</span></div>
-          <div class="frb-bk-srow"><span class="lbl">Nights</span><span class="val">${nights}</span></div>
-          <div class="frb-bk-srow"><span class="lbl">Guests</span><span class="val">${adults}</span></div>
-          <div class="frb-bk-srow frb-bk-total"><span class="lbl">Estimated Total</span><span class="val" id="frb-sum-total">Loading…</span></div>
-          <div class="frb-bk-srow frb-bk-deposit"><span class="lbl">50% Deposit Due</span><span class="val" id="frb-sum-deposit">—</span></div>
-        </div>
+      <!-- LEFT COLUMN -->
+      <div class="frb-bk-left">
 
-        <h2>Your Details</h2>
+        <!-- PRICE BREAKDOWN -->
+        <h2 class="frb-pr-title">Price Breakdown</h2>
+        <div class="frb-pr-prop">
+          <span class="frb-pr-prop-name">☐ #1 ${propertyName}</span>
+          <span class="frb-pr-prop-price" id="frb-pr-accom-price">—</span>
+        </div>
+        <p class="frb-pr-rate">Rate: ${propertyName}</p>
+        <table class="frb-pr-table">
+          <tr><td>Adults</td><td>${adults}</td></tr>
+          <tr><td>Nights</td><td>${nights}</td></tr>
+          <tr class="frb-pr-header"><td>Dates</td><td>Amount</td></tr>
+          ${dateRows}
+          <tr class="frb-pr-bold"><td>Accommodation Total</td><td id="frb-pr-accom-total">—</td></tr>
+          <tr class="frb-pr-header"><td>Accommodation Taxes</td><td>Amount</td></tr>
+          <tr><td>Card Processing Fee</td><td id="frb-pr-card-fee">—</td></tr>
+          <tr class="frb-pr-bold"><td>Accommodation Taxes Total</td><td id="frb-pr-tax-total">—</td></tr>
+          <tr class="frb-pr-header"><td>Fees</td><td>Amount</td></tr>
+          <tr><td>Travel Insurance</td><td id="frb-pr-insurance">$35</td></tr>
+          <tr><td>Cleaning Fee</td><td id="frb-pr-cleaning">$75</td></tr>
+          <tr><td>Levy</td><td id="frb-pr-levy">—</td></tr>
+          <tr class="frb-pr-bold"><td>Fees Total</td><td id="frb-pr-fees-total">—</td></tr>
+          <tr class="frb-pr-header"><td>Fee Taxes</td><td>Amount</td></tr>
+          <tr><td>Card Processing Fee</td><td id="frb-pr-fee-tax">—</td></tr>
+          <tr class="frb-pr-bold"><td>Fee Taxes Total</td><td id="frb-pr-fee-tax-total">—</td></tr>
+          <tr class="frb-pr-bold"><td>Subtotal</td><td id="frb-pr-subtotal">—</td></tr>
+          <tr><td>Subtotal (excl. taxes)</td><td id="frb-pr-subtotal-ex">—</td></tr>
+          <tr><td>Taxes</td><td id="frb-pr-taxes">—</td></tr>
+          <tr class="frb-pr-total"><td>Total</td><td id="frb-pr-grand-total">Loading…</td></tr>
+        </table>
+
+        <hr class="frb-pr-divider">
+
+        <!-- YOUR INFORMATION -->
+        <h2 class="frb-info-title">Your Information</h2>
+        <p class="frb-info-req">Required fields are followed by *</p>
+
         <form id="frb-bk-form">
-          <div class="frb-bk-grid">
-            <div class="frb-bk-row"><label>First Name *</label><input type="text" id="frb-firstName" required></div>
-            <div class="frb-bk-row"><label>Last Name *</label><input type="text" id="frb-lastName" required></div>
+          <div class="frb-field"><label>First Name *</label><input type="text" id="frb-firstName" required></div>
+          <div class="frb-field"><label>Last Name *</label><input type="text" id="frb-lastName" required></div>
+          <div class="frb-field"><label>Email *</label><input type="email" id="frb-email" required></div>
+          <div class="frb-field"><label>Phone *</label><input type="tel" id="frb-phone" required></div>
+          <div class="frb-field"><label>Country of residence *</label><select id="frb-country" required>${countryOpts}</select></div>
+          <div class="frb-field"><label>Notes</label><textarea id="frb-message" placeholder=""></textarea></div>
+
+          <hr class="frb-pr-divider">
+
+          <!-- PAYMENT METHOD -->
+          <h2 class="frb-pay-title">Payment Method</h2>
+          <p class="frb-pay-method">Visa / Mastercard / Debit Card Payment</p>
+          <p class="frb-pay-desc">Secure payment via your preferred card provider.</p>
+
+          <div class="frb-pay-total-row">
+            <span class="frb-pay-total-label">Total Price:</span>
+            <span class="frb-pay-total-val" id="frb-pay-total">Loading…</span>
           </div>
-          <div class="frb-bk-grid">
-            <div class="frb-bk-row"><label>Email Address *</label><input type="email" id="frb-email" required></div>
-            <div class="frb-bk-row"><label>Phone Number</label><input type="tel" id="frb-phone"></div>
+
+          <div class="frb-terms-row">
+            <input type="checkbox" id="frb-terms" required>
+            <label for="frb-terms">I've read and accept the <a href="#" onclick="event.preventDefault();">terms &amp; conditions</a> *</label>
           </div>
-          <div class="frb-bk-grid">
-            <div class="frb-bk-row"><label>Adults</label><select id="frb-adults">${adultsOpts}</select></div>
-            <div class="frb-bk-row"><label>Children</label>
-              <select id="frb-children"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
-            </div>
-          </div>
-          <div class="frb-bk-row"><label>Special Requests / Notes</label><textarea id="frb-message" placeholder="Any special requirements or questions..."></textarea></div>
-          <button type="submit" class="frb-bk-submit" id="frb-bk-submit">Confirm Booking Enquiry</button>
-          <p style="font-size:11px;color:#999;text-align:center;margin-top:14px;font-family:'Montserrat',sans-serif;">You won't be charged yet. We'll confirm availability and send payment details.</p>
+
+          <button type="submit" class="frb-bk-submit" id="frb-bk-submit">Reserve Now</button>
         </form>
       </div>
 
-      <!-- RIGHT: Dark sidebar with accordion policies -->
+      <!-- RIGHT SIDEBAR -->
       <div class="frb-bk-sidebar">
-        <p class="frb-bk-sidebar-title">Terms &amp; Conditions</p>
-
         <div class="frb-bk-acc">
           <div class="frb-bk-acc-head" onclick="this.querySelector('.frb-bk-acc-icon').textContent=this.nextElementSibling.classList.toggle('open')?'−':'+';"><span>Payment Terms</span><span class="frb-bk-acc-icon">+</span></div>
           <div class="frb-bk-acc-body"><ul>
@@ -430,7 +523,6 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
             <li>Full payment required if booking within 60 days</li>
           </ul></div>
         </div>
-
         <div class="frb-bk-acc">
           <div class="frb-bk-acc-head" onclick="this.querySelector('.frb-bk-acc-icon').textContent=this.nextElementSibling.classList.toggle('open')?'−':'+';"><span>Cancellation Policy</span><span class="frb-bk-acc-icon">+</span></div>
           <div class="frb-bk-acc-body"><ul>
@@ -439,7 +531,6 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
             <li>Refunds exclude bank/FX charges</li>
           </ul></div>
         </div>
-
         <div class="frb-bk-acc">
           <div class="frb-bk-acc-head" onclick="this.querySelector('.frb-bk-acc-icon').textContent=this.nextElementSibling.classList.toggle('open')?'−':'+';"><span>Damage &amp; Liability</span><span class="frb-bk-acc-icon">+</span></div>
           <div class="frb-bk-acc-body"><ul>
@@ -447,7 +538,6 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
             <li>You are responsible for any additional damages or losses</li>
           </ul></div>
         </div>
-
         <div class="frb-bk-acc">
           <div class="frb-bk-acc-head" onclick="this.querySelector('.frb-bk-acc-icon').textContent=this.nextElementSibling.classList.toggle('open')?'−':'+';"><span>House Rules</span><span class="frb-bk-acc-icon">+</span></div>
           <div class="frb-bk-acc-body"><ul>
@@ -459,7 +549,6 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
             <li>You're responsible for bank fees or exchange rate differences</li>
           </ul></div>
         </div>
-
         <div class="frb-bk-acc">
           <div class="frb-bk-acc-head" onclick="this.querySelector('.frb-bk-acc-icon').textContent=this.nextElementSibling.classList.toggle('open')?'−':'+';"><span>Additional Info</span><span class="frb-bk-acc-icon">+</span></div>
           <div class="frb-bk-acc-body"><ul>
@@ -469,7 +558,6 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
             <li>If double-booked, similar options or full refund offered</li>
           </ul></div>
         </div>
-
         <div class="frb-bk-acc">
           <div class="frb-bk-acc-head" onclick="this.querySelector('.frb-bk-acc-icon').textContent=this.nextElementSibling.classList.toggle('open')?'−':'+';"><span>Legal Note</span><span class="frb-bk-acc-icon">+</span></div>
           <div class="frb-bk-acc-body"><ul>
@@ -492,24 +580,65 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
     document.body.style.overflow = "";
   });
 
-  // Fetch pricing
+  // Fetch pricing and fill the breakdown table
   let totalWithTax = null;
   let deposit50 = null;
+  const INSURANCE = 35;
+  const CLEANING = 75;
+  const CARD_FEE_RATE = 0.06; // 6%
+
   if (slug && nights > 0) {
     fetch(`${SUPABASE_URL}/functions/v1/pricing?propertySlug=${slug}&checkIn=${checkIn}&checkOut=${checkOut}`)
       .then(r => r.json())
       .then(data => {
         if (data && data.totalPrice && !data.notConfigured) {
-          totalWithTax = Math.round(data.totalPrice * (1 + TAX_RATE) * 100) / 100;
+          const accomTotal = data.totalPrice;
+          const perNight = Math.round(accomTotal / nights * 100) / 100;
+
+          // Fill per-night rows
+          for (let i = 0; i < nights; i++) {
+            const el = document.getElementById("frb-night-" + i);
+            if (el) el.textContent = "$" + perNight.toLocaleString(undefined, { minimumFractionDigits: 0 });
+          }
+
+          // Accommodation
+          const accomCardFee = Math.round(accomTotal * CARD_FEE_RATE * 100) / 100;
+          const accomTaxTotal = accomCardFee;
+          const levy = Math.round(accomTotal * 0.10 * 100) / 100; // 10% levy
+          const feesSubtotal = INSURANCE + CLEANING + levy;
+          const feeCardFee = Math.round(feesSubtotal * CARD_FEE_RATE * 100) / 100;
+          const feeTaxTotal = feeCardFee;
+          const subtotal = accomTotal + accomTaxTotal + feesSubtotal + feeTaxTotal;
+          const subtotalExTax = accomTotal + feesSubtotal;
+          const totalTaxes = accomTaxTotal + feeTaxTotal;
+          const grandTotal = subtotal;
+
+          totalWithTax = Math.round(grandTotal * 100) / 100;
           deposit50 = Math.round(totalWithTax * 0.5 * 100) / 100;
-          document.getElementById("frb-sum-total").textContent = "$" + totalWithTax.toLocaleString(undefined, { maximumFractionDigits: 2 });
-          document.getElementById("frb-sum-deposit").textContent = "$" + deposit50.toLocaleString(undefined, { maximumFractionDigits: 2 });
+
+          const fmt = (v) => "$" + v.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+          document.getElementById("frb-pr-accom-price").textContent = fmt(accomTotal);
+          document.getElementById("frb-pr-accom-total").textContent = fmt(accomTotal);
+          document.getElementById("frb-pr-card-fee").textContent = fmt(accomCardFee);
+          document.getElementById("frb-pr-tax-total").textContent = fmt(accomTaxTotal);
+          document.getElementById("frb-pr-levy").textContent = fmt(levy);
+          document.getElementById("frb-pr-fees-total").textContent = fmt(feesSubtotal);
+          document.getElementById("frb-pr-fee-tax").textContent = fmt(feeCardFee);
+          document.getElementById("frb-pr-fee-tax-total").textContent = fmt(feeTaxTotal);
+          document.getElementById("frb-pr-subtotal").textContent = fmt(subtotal);
+          document.getElementById("frb-pr-subtotal-ex").textContent = fmt(subtotalExTax);
+          document.getElementById("frb-pr-taxes").textContent = fmt(totalTaxes);
+          document.getElementById("frb-pr-grand-total").textContent = fmt(grandTotal);
+          document.getElementById("frb-pay-total").textContent = fmt(grandTotal);
         } else {
-          document.getElementById("frb-sum-total").textContent = "Contact for price";
+          document.getElementById("frb-pr-grand-total").textContent = "Contact for price";
+          document.getElementById("frb-pay-total").textContent = "Contact for price";
         }
       })
       .catch(() => {
-        document.getElementById("frb-sum-total").textContent = "Contact for price";
+        document.getElementById("frb-pr-grand-total").textContent = "Contact for price";
+        document.getElementById("frb-pay-total").textContent = "Contact for price";
       });
   }
 
@@ -518,15 +647,16 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
     ev.preventDefault();
     const btn = document.getElementById("frb-bk-submit");
     btn.disabled = true;
-    btn.textContent = "Sending…";
+    btn.textContent = "Processing…";
 
     const payload = {
       firstName: document.getElementById("frb-firstName").value.trim(),
       lastName:  document.getElementById("frb-lastName").value.trim(),
       email:     document.getElementById("frb-email").value.trim(),
       phone:     document.getElementById("frb-phone").value.trim(),
-      adults:    parseInt(document.getElementById("frb-adults").value),
-      children:  parseInt(document.getElementById("frb-children").value),
+      country:   document.getElementById("frb-country").value,
+      adults:    adults,
+      children:  0,
       message:   document.getElementById("frb-message").value.trim(),
       property:  propertyName,
       checkIn, checkOut, nights, totalWithTax, deposit50,
@@ -540,20 +670,19 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
       });
       if (!res.ok) throw new Error("fail");
     } catch (err) {
-      // Fallback: mailto
       const subj = encodeURIComponent("Booking Enquiry – " + propertyName);
       const body = encodeURIComponent(
         "Name: " + payload.firstName + " " + payload.lastName + "\n" +
-        "Email: " + payload.email + "\nPhone: " + payload.phone + "\n" +
+        "Email: " + payload.email + "\nPhone: " + payload.phone + "\nCountry: " + payload.country + "\n" +
         "Property: " + propertyName + "\nCheck-in: " + checkIn + "\nCheck-out: " + checkOut + "\n" +
-        "Nights: " + nights + "\nAdults: " + payload.adults + "\nChildren: " + payload.children + "\n" +
-        "Total: $" + (totalWithTax || "TBD") + "\n\nMessage: " + payload.message
+        "Nights: " + nights + "\nAdults: " + payload.adults + "\n" +
+        "Total: $" + (totalWithTax || "TBD") + "\n\nNotes: " + payload.message
       );
       window.open("mailto:maisha@forrentbarbados.com?subject=" + subj + "&body=" + body, "_self");
     }
 
     // Show confirmation
-    const fmtLong = (d) => { try { return new Date(d + "T00:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }); } catch { return d; } };
+    const fmtLong = (d) => { try { return new Date(d + "T00:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }); } catch { return d; } };
     document.getElementById("frb-bk-content").innerHTML = `
       <div class="frb-bk-confirm">
         <div class="chk">
@@ -568,3 +697,4 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
     `;
   });
 }
+
