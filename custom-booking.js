@@ -239,92 +239,118 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
   overlay.id = "frb-booking-overlay";
   overlay.innerHTML = `
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Spinnaker&family=Montserrat:wght@300;400;500;600&family=Roboto+Slab:wght@300;400;500&display=swap');
       #frb-booking-overlay {
         position: fixed; top: 0; left: 0; right: 0; bottom: 0;
         z-index: 99999; background: #fff; overflow-y: auto;
       }
-      #frb-booking-overlay * { box-sizing: border-box; }
+      #frb-booking-overlay * { box-sizing: border-box; margin: 0; padding: 0; }
       .frb-bk-header {
-        background: #042E28; padding: 16px 40px;
+        background: #042E28; padding: 14px 40px;
         display: flex; align-items: center; justify-content: space-between;
       }
-      .frb-bk-header img { height: 40px; }
+      .frb-bk-header img { height: 36px; }
       .frb-bk-close {
         background: none; border: none; color: #fff; font-size: 28px;
         cursor: pointer; font-family: sans-serif; line-height: 1; padding: 4px 12px;
       }
       .frb-bk-close:hover { opacity: .7; }
-      .frb-bk-title-bar {
-        background: #042E28; padding: 24px 40px 32px; text-align: center;
+      .frb-bk-hero {
+        background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+                    url('/wp-content/uploads/2024/07/DJI_0182-scaled.jpg') center/cover no-repeat;
+        padding: 80px 40px; text-align: center; min-height: 200px;
+        display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
       }
-      .frb-bk-title-bar h1 {
-        font-family: 'Roboto Slab', 'Times New Roman', serif;
-        font-size: 28px; font-weight: 400; color: #fff; margin: 0 0 6px;
+      .frb-bk-hero h1 {
+        font-family: 'Spinnaker', sans-serif; font-size: 42px; font-weight: 400;
+        color: #fff; margin: 0; letter-spacing: 1px; text-transform: none;
       }
-      .frb-bk-title-bar p {
-        font-family: 'Montserrat', sans-serif; font-size: 14px;
-        color: rgba(255,255,255,.6); margin: 0;
-      }
+      @media (max-width: 600px) { .frb-bk-hero { padding: 50px 20px; } .frb-bk-hero h1 { font-size: 28px; } }
       .frb-bk-content {
-        max-width: 1100px; margin: 0 auto; padding: 48px 40px 80px;
-        display: grid; grid-template-columns: 1fr 360px; gap: 48px;
+        display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+        max-width: 100%; margin: 0;
       }
-      @media (max-width: 860px) {
-        .frb-bk-content { grid-template-columns: 1fr; padding: 28px 20px 60px; }
+      @media (max-width: 860px) { .frb-bk-content { grid-template-columns: 1fr; } }
+      .frb-bk-form {
+        padding: 48px 60px 60px; background: #fff;
       }
+      @media (max-width: 600px) { .frb-bk-form { padding: 32px 20px 40px; } }
       .frb-bk-form h2 {
-        font-family: 'Roboto Slab', 'Times New Roman', serif;
-        font-size: 22px; font-weight: 400; color: #363636; margin: 0 0 24px;
+        font-family: 'Roboto Slab', serif; font-size: 22px; font-weight: 400;
+        color: #363636; margin: 0 0 28px;
       }
-      .frb-bk-row { margin-bottom: 18px; }
+      .frb-bk-row { margin-bottom: 20px; }
       .frb-bk-row label {
-        display: block; font-family: 'Poppins', sans-serif; font-size: 10px;
-        text-transform: uppercase; letter-spacing: 1px; color: #888; margin-bottom: 6px;
+        display: block; font-family: 'Montserrat', sans-serif; font-size: 12px;
+        font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
+        color: #6c6c6c; margin-bottom: 8px;
       }
       .frb-bk-row input, .frb-bk-row select, .frb-bk-row textarea {
-        width: 100%; border: 1px solid #EAEAEA; padding: 10px 12px;
-        font-family: 'Montserrat', sans-serif; font-size: 13px; color: #363636;
-        outline: none; background: #fff; border-radius: 0;
+        width: 100%; border: 1px solid #d3d3d3; padding: 12px 14px;
+        font-family: 'Montserrat', sans-serif; font-size: 14px; color: #363636;
+        outline: none; background: #fff; border-radius: 0; transition: border-color .2s;
       }
-      .frb-bk-row textarea { resize: vertical; min-height: 80px; }
+      .frb-bk-row textarea { resize: vertical; min-height: 90px; }
       .frb-bk-row input:focus, .frb-bk-row select:focus, .frb-bk-row textarea:focus { border-color: #042E28; }
-      .frb-bk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .frb-bk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
       @media (max-width: 500px) { .frb-bk-grid { grid-template-columns: 1fr; } }
-      .frb-bk-submit {
-        display: block; width: 100%; background: #1a1a1a; color: #fff; border: none;
-        font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 400;
-        text-transform: uppercase; letter-spacing: 4.2px; text-align: center;
-        padding: 16px 20px; cursor: pointer; transition: opacity .2s; margin-top: 8px;
+      .frb-bk-summary {
+        background: #f7f7f7; border: 1px solid #eaeaea; padding: 20px 24px; margin-bottom: 28px;
       }
-      .frb-bk-submit:hover { opacity: .85; }
+      .frb-bk-summary h3 {
+        font-family: 'Roboto Slab', serif; font-size: 16px; font-weight: 400;
+        color: #363636; margin: 0 0 16px; padding-bottom: 12px;
+        border-bottom: 1px solid #eaeaea;
+      }
+      .frb-bk-srow { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; font-size: 13px; font-family: 'Montserrat', sans-serif; color: #555; }
+      .frb-bk-srow .val { font-weight: 600; color: #363636; }
+      .frb-bk-total { margin-top: 12px; padding-top: 12px; border-top: 1px solid #eaeaea; font-size: 15px; }
+      .frb-bk-total .val { color: #042E28; }
+      .frb-bk-deposit { font-size: 13px; margin-top: 4px; }
+      .frb-bk-deposit .val { color: #FFBC7D; }
+      .frb-bk-submit {
+        display: block; width: 100%; background: #151515; color: #fff; border: none;
+        font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 500;
+        text-transform: uppercase; letter-spacing: 3px; text-align: center;
+        padding: 16px 20px; cursor: pointer; transition: background .2s; margin-top: 8px;
+      }
+      .frb-bk-submit:hover { background: #333; }
       .frb-bk-submit:disabled { background: #aaa; cursor: not-allowed; }
 
-      .frb-bk-sidebar { background: #1a1a1a; padding: 32px 28px; color: #fff; align-self: start; }
-      .frb-bk-sidebar h3 {
-        font-family: 'Roboto Slab', 'Times New Roman', serif; font-size: 18px;
-        font-weight: 400; margin: 0 0 20px; padding-bottom: 12px;
-        border-bottom: 1px solid rgba(255,255,255,.15);
+      /* RIGHT SIDEBAR — dark with accordions */
+      .frb-bk-sidebar {
+        background: #1a1a1a; padding: 48px 40px; color: #fff; align-self: stretch;
       }
-      .frb-bk-srow { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; font-size: 13px; }
-      .frb-bk-srow .lbl { color: rgba(255,255,255,.6); }
-      .frb-bk-srow .val { font-weight: 500; }
-      .frb-bk-total { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.15); font-size: 16px; font-weight: 600; }
-      .frb-bk-deposit { font-size: 13px; color: #FFBC7D; margin-top: 6px; }
-
-      .frb-bk-policy { margin-top: 24px; }
-      .frb-bk-policy h4 {
-        font-family: 'Poppins', sans-serif; font-size: 10px; text-transform: uppercase;
-        letter-spacing: 1.5px; color: rgba(255,255,255,.5); margin: 0; padding: 10px 0;
-        cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-        border-bottom: 1px solid rgba(255,255,255,.08);
+      @media (max-width: 600px) { .frb-bk-sidebar { padding: 32px 20px; } }
+      .frb-bk-sidebar-title {
+        font-family: 'Spinnaker', sans-serif; font-size: 20px; font-weight: 400;
+        color: #fff; margin: 0 0 28px; letter-spacing: 0.5px;
       }
-      .frb-bk-policy h4::after { content: '▾'; font-size: 11px; }
-      .frb-bk-policy h4.open::after { content: '▴'; }
-      .frb-bk-policy-body {
-        display: none; font-size: 12px; line-height: 1.7; color: rgba(255,255,255,.6);
-        padding: 10px 0 16px;
+      .frb-bk-acc { border-bottom: 1px solid rgba(255,255,255,.1); }
+      .frb-bk-acc-head {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 16px 0; cursor: pointer; user-select: none;
       }
-      .frb-bk-policy-body.open { display: block; }
+      .frb-bk-acc-head span {
+        font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 600;
+        color: rgba(255,255,255,.85); letter-spacing: 0.3px;
+      }
+      .frb-bk-acc-icon {
+        font-family: sans-serif; font-size: 18px; font-weight: 300;
+        color: rgba(255,255,255,.5); transition: transform .2s; line-height: 1;
+      }
+      .frb-bk-acc-body {
+        max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s ease;
+        padding: 0 0;
+      }
+      .frb-bk-acc-body.open { max-height: 500px; padding: 0 0 16px; }
+      .frb-bk-acc-body ul {
+        list-style: disc; padding-left: 18px; margin: 0;
+      }
+      .frb-bk-acc-body li {
+        font-family: 'Montserrat', sans-serif; font-size: 13px; line-height: 1.9;
+        color: rgba(255,255,255,.6); margin-bottom: 2px;
+      }
 
       .frb-bk-confirm { text-align: center; padding: 60px 20px; grid-column: 1 / -1; }
       .frb-bk-confirm .chk {
@@ -332,10 +358,10 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
         display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;
       }
       .frb-bk-confirm h2 { font-family: 'Roboto Slab', serif; font-size: 26px; font-weight: 400; color: #363636; margin: 0 0 12px; }
-      .frb-bk-confirm p { font-size: 14px; line-height: 1.8; color: #888; max-width: 500px; margin: 0 auto 24px; }
+      .frb-bk-confirm p { font-size: 14px; line-height: 1.8; color: #888; max-width: 500px; margin: 0 auto 24px; font-family: 'Montserrat', sans-serif; }
       .frb-bk-confirm .btn-back {
         display: inline-block; background: #042E28; color: #fff;
-        font-family: 'Poppins', sans-serif; font-size: 12px; text-transform: uppercase;
+        font-family: 'Montserrat', sans-serif; font-size: 12px; text-transform: uppercase;
         letter-spacing: 3px; padding: 14px 40px; text-decoration: none; transition: opacity .2s;
       }
       .frb-bk-confirm .btn-back:hover { opacity: .85; }
@@ -350,14 +376,26 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
       <a href="/index.html"><img src="/wp-content/uploads/2021/10/LOGO-FRB-10.svg" alt="For Rent Barbados"></a>
       <button class="frb-bk-close" id="frb-bk-close-btn">&times;</button>
     </div>
-    <div class="frb-bk-title-bar">
-      <h1>Booking Reservation</h1>
-      <p>${propertyName}</p>
+
+    <div class="frb-bk-hero">
+      <h1>Booking reservation</h1>
     </div>
 
     <div class="frb-bk-content" id="frb-bk-content">
+      <!-- LEFT: Form + Summary -->
       <div class="frb-bk-form">
-        <h2>Guest Details</h2>
+        <div class="frb-bk-summary">
+          <h3>Booking Summary</h3>
+          <div class="frb-bk-srow"><span class="lbl">Property</span><span class="val">${propertyName}</span></div>
+          <div class="frb-bk-srow"><span class="lbl">Check-in</span><span class="val">${fmtDate(checkIn)}</span></div>
+          <div class="frb-bk-srow"><span class="lbl">Check-out</span><span class="val">${fmtDate(checkOut)}</span></div>
+          <div class="frb-bk-srow"><span class="lbl">Nights</span><span class="val">${nights}</span></div>
+          <div class="frb-bk-srow"><span class="lbl">Guests</span><span class="val">${adults}</span></div>
+          <div class="frb-bk-srow frb-bk-total"><span class="lbl">Estimated Total</span><span class="val" id="frb-sum-total">Loading…</span></div>
+          <div class="frb-bk-srow frb-bk-deposit"><span class="lbl">50% Deposit Due</span><span class="val" id="frb-sum-deposit">—</span></div>
+        </div>
+
+        <h2>Your Details</h2>
         <form id="frb-bk-form">
           <div class="frb-bk-grid">
             <div class="frb-bk-row"><label>First Name *</label><input type="text" id="frb-firstName" required></div>
@@ -373,33 +411,70 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
               <select id="frb-children"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
             </div>
           </div>
-          <div class="frb-bk-row"><label>Special Requests / Notes</label><textarea id="frb-message" placeholder="Any special requirements..."></textarea></div>
+          <div class="frb-bk-row"><label>Special Requests / Notes</label><textarea id="frb-message" placeholder="Any special requirements or questions..."></textarea></div>
           <button type="submit" class="frb-bk-submit" id="frb-bk-submit">Confirm Booking Enquiry</button>
-          <p style="font-size:11px;color:#aaa;text-align:center;margin-top:12px;">You won't be charged yet. We'll confirm availability and send payment details.</p>
+          <p style="font-size:11px;color:#999;text-align:center;margin-top:14px;font-family:'Montserrat',sans-serif;">You won't be charged yet. We'll confirm availability and send payment details.</p>
         </form>
       </div>
 
+      <!-- RIGHT: Dark sidebar with accordion policies -->
       <div class="frb-bk-sidebar">
-        <h3>Booking Summary</h3>
-        <div class="frb-bk-srow"><span class="lbl">Property</span><span class="val">${propertyName}</span></div>
-        <div class="frb-bk-srow"><span class="lbl">Check-in</span><span class="val">${fmtDate(checkIn)}</span></div>
-        <div class="frb-bk-srow"><span class="lbl">Check-out</span><span class="val">${fmtDate(checkOut)}</span></div>
-        <div class="frb-bk-srow"><span class="lbl">Nights</span><span class="val">${nights}</span></div>
-        <div class="frb-bk-srow"><span class="lbl">Guests</span><span class="val">${adults}</span></div>
-        <div class="frb-bk-srow frb-bk-total"><span class="lbl">Estimated Total</span><span class="val" id="frb-sum-total">Loading…</span></div>
-        <div class="frb-bk-srow frb-bk-deposit"><span class="lbl">50% Deposit Due</span><span class="val" id="frb-sum-deposit">—</span></div>
+        <p class="frb-bk-sidebar-title">Terms &amp; Conditions</p>
 
-        <div class="frb-bk-policy">
-          <h4 onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Payment Terms</h4>
-          <div class="frb-bk-policy-body">A 50% deposit is required to confirm the booking. The remaining balance is due 30 days before arrival. For bookings made within 30 days of arrival, full payment is required at the time of booking.</div>
+        <div class="frb-bk-acc">
+          <div class="frb-bk-acc-head" onclick="this.querySelector('.frb-bk-acc-icon').textContent=this.nextElementSibling.classList.toggle('open')?'−':'+';"><span>Payment Terms</span><span class="frb-bk-acc-icon">+</span></div>
+          <div class="frb-bk-acc-body"><ul>
+            <li>50% non-refundable deposit to confirm the booking</li>
+            <li>Final 50% due 60 days before arrival</li>
+            <li>Full payment required if booking within 60 days</li>
+          </ul></div>
         </div>
-        <div class="frb-bk-policy">
-          <h4 onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">Cancellation Policy</h4>
-          <div class="frb-bk-policy-body">Cancellations made more than 30 days before check-in receive a full refund of the deposit minus a 10% administration fee. Cancellations within 30 days of check-in are non-refundable.</div>
+
+        <div class="frb-bk-acc">
+          <div class="frb-bk-acc-head" onclick="this.querySelector('.frb-bk-acc-icon').textContent=this.nextElementSibling.classList.toggle('open')?'−':'+';"><span>Cancellation Policy</span><span class="frb-bk-acc-icon">+</span></div>
+          <div class="frb-bk-acc-body"><ul>
+            <li>Cancellations &gt;60 days: Refund minus 50% deposit</li>
+            <li>&lt;60 days: No refund</li>
+            <li>Refunds exclude bank/FX charges</li>
+          </ul></div>
         </div>
-        <div class="frb-bk-policy">
-          <h4 onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">House Rules</h4>
-          <div class="frb-bk-policy-body">Check-in: 3:00 PM – Check-out: 11:00 AM. No smoking indoors. No parties or events. Pets allowed on request only.</div>
+
+        <div class="frb-bk-acc">
+          <div class="frb-bk-acc-head" onclick="this.querySelector('.frb-bk-acc-icon').textContent=this.nextElementSibling.classList.toggle('open')?'−':'+';"><span>Damage &amp; Liability</span><span class="frb-bk-acc-icon">+</span></div>
+          <div class="frb-bk-acc-body"><ul>
+            <li>Covered up to USD$500 via Truvi Insurance</li>
+            <li>You are responsible for any additional damages or losses</li>
+          </ul></div>
+        </div>
+
+        <div class="frb-bk-acc">
+          <div class="frb-bk-acc-head" onclick="this.querySelector('.frb-bk-acc-icon').textContent=this.nextElementSibling.classList.toggle('open')?'−':'+';"><span>House Rules</span><span class="frb-bk-acc-icon">+</span></div>
+          <div class="frb-bk-acc-body"><ul>
+            <li>No more than 2 guests per room</li>
+            <li>No events, parties, or indoor smoking</li>
+            <li>Visitors: max 2 allowed during the day only</li>
+            <li>Check-In: 3 PM | Check-Out: 11 AM</li>
+            <li>Maintain property as found – clean and damage-free</li>
+            <li>You're responsible for bank fees or exchange rate differences</li>
+          </ul></div>
+        </div>
+
+        <div class="frb-bk-acc">
+          <div class="frb-bk-acc-head" onclick="this.querySelector('.frb-bk-acc-icon').textContent=this.nextElementSibling.classList.toggle('open')?'−':'+';"><span>Additional Info</span><span class="frb-bk-acc-icon">+</span></div>
+          <div class="frb-bk-acc-body"><ul>
+            <li>Concierge services (e.g., groceries, transport) at guest's cost</li>
+            <li>Rental Agent not liable for injuries, personal loss, or utility failures</li>
+            <li>Breach of terms may lead to eviction without refund</li>
+            <li>If double-booked, similar options or full refund offered</li>
+          </ul></div>
+        </div>
+
+        <div class="frb-bk-acc">
+          <div class="frb-bk-acc-head" onclick="this.querySelector('.frb-bk-acc-icon').textContent=this.nextElementSibling.classList.toggle('open')?'−':'+';"><span>Legal Note</span><span class="frb-bk-acc-icon">+</span></div>
+          <div class="frb-bk-acc-body"><ul>
+            <li>Agreement governed by Barbados law</li>
+            <li>Rental Agent not liable for claims, damages, or legal disputes</li>
+          </ul></div>
         </div>
       </div>
     </div>
