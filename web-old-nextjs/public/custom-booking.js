@@ -244,7 +244,7 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
         position: fixed; top: 0; left: 0; right: 0; bottom: 0;
         z-index: 99999; background: #fff; overflow-y: auto;
       }
-      #frb-booking-overlay * { box-sizing: border-box; margin: 0; padding: 0; }
+      #frb-booking-overlay * { box-sizing: border-box; }
       .frb-bk-header {
         background: #042E28; padding: 14px 40px;
         display: flex; align-items: center; justify-content: space-between;
@@ -267,10 +267,10 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
       }
       @media (max-width: 600px) { .frb-bk-hero { padding: 50px 20px; } .frb-bk-hero h1 { font-size: 28px; } }
       .frb-bk-content {
-        display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-        max-width: 100%; margin: 0;
+        display: grid; grid-template-columns: 3fr 2fr; gap: 0;
+        max-width: 1400px; margin: 0 auto;
       }
-      @media (max-width: 860px) { .frb-bk-content { grid-template-columns: 1fr; } }
+      @media (max-width: 960px) { .frb-bk-content { grid-template-columns: 1fr; } }
       .frb-bk-form {
         padding: 48px 60px 60px; background: #fff;
       }
@@ -295,7 +295,8 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
       .frb-bk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
       @media (max-width: 500px) { .frb-bk-grid { grid-template-columns: 1fr; } }
       .frb-bk-summary {
-        background: #f7f7f7; border: 1px solid #eaeaea; padding: 20px 24px; margin-bottom: 28px;
+        background: #f7f7f7; border: 1px solid #eaeaea; padding: 24px 28px; margin: 0 0 32px 0;
+        border-radius: 2px;
       }
       .frb-bk-summary h3 {
         font-family: 'Roboto Slab', serif; font-size: 16px; font-weight: 400;
