@@ -282,7 +282,7 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
       .frb-bk-close:hover { opacity: .7; }
       .frb-bk-hero-wrap {
         background: linear-gradient(rgba(4,46,40,.75), rgba(4,46,40,.65)),
-                    url('/wp-content/uploads/2024/07/DJI_0182-scaled.jpg') center/cover no-repeat;
+                    url('/wp-content/uploads/2025/04/banner.jpg') center/cover no-repeat;
         min-height: 280px; display: flex; flex-direction: column;
       }
       .frb-bk-hero {
