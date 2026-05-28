@@ -433,6 +433,43 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
       }
       .frb-coupon-btn:hover { background: #064e42; }
 
+      /* TERMS MODAL */
+      .frb-terms-modal {
+        display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        z-index: 100000; background: rgba(0,0,0,.6);
+        justify-content: center; align-items: center; padding: 20px;
+      }
+      .frb-terms-modal.open { display: flex; }
+      .frb-terms-modal-inner {
+        background: #fff; max-width: 700px; width: 100%; max-height: 85vh;
+        overflow-y: auto; border-radius: 8px; padding: 40px;
+        position: relative; box-shadow: 0 20px 60px rgba(0,0,0,.3);
+      }
+      .frb-terms-modal-close {
+        position: absolute; top: 16px; right: 20px; background: none; border: none;
+        font-size: 24px; cursor: pointer; color: #555; line-height: 1;
+      }
+      .frb-terms-modal-inner h2 {
+        font-family: 'Lato', sans-serif; font-size: 24px; font-weight: 300;
+        color: #363636; margin: 0 0 24px;
+      }
+      .frb-terms-modal-inner h3 {
+        font-family: 'Lato', sans-serif; font-size: 16px; font-weight: 700;
+        color: #363636; margin: 24px 0 8px;
+      }
+      .frb-terms-modal-inner ul {
+        list-style: disc; padding-left: 20px; margin: 0 0 8px;
+      }
+      .frb-terms-modal-inner li {
+        font-family: 'Lato', sans-serif; font-size: 14px; line-height: 1.8;
+        color: #555; margin-bottom: 2px;
+      }
+      .frb-terms-error {
+        font-family: 'Lato', sans-serif; font-size: 13px; color: #e74c3c;
+        margin: 8px 0 0 28px; display: none;
+      }
+      .frb-terms-error.show { display: block; }
+
       /* RIGHT SIDEBAR */
       .frb-bk-sidebar {
         background: #1a1a1a; padding: 48px 40px; color: #fff; align-self: stretch;
@@ -614,12 +651,59 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
           </div>
 
           <div class="frb-terms-row">
-            <input type="checkbox" id="frb-terms" required>
-            <label for="frb-terms">I've read and accept the <a href="#" onclick="event.preventDefault();">terms &amp; conditions</a> *</label>
+            <input type="checkbox" id="frb-terms">
+            <label for="frb-terms">I've read and accept the <a href="#" id="frb-terms-link">terms &amp; conditions</a> *</label>
           </div>
+          <p class="frb-terms-error" id="frb-terms-error">You must agree to the terms and conditions before proceeding.</p>
 
           <button type="submit" class="frb-bk-submit" id="frb-bk-submit">Reserve Now</button>
         </form>
+      </div>
+
+      <!-- TERMS MODAL -->
+      <div class="frb-terms-modal" id="frb-terms-modal">
+        <div class="frb-terms-modal-inner">
+          <button class="frb-terms-modal-close" id="frb-terms-modal-close">&times;</button>
+          <h2>Terms &amp; Conditions</h2>
+          <h3>Payment Terms</h3>
+          <ul>
+            <li>50% non-refundable deposit to confirm the booking</li>
+            <li>Final 50% due 60 days before arrival</li>
+            <li>Full payment required if booking within 60 days</li>
+          </ul>
+          <h3>Cancellation Policy</h3>
+          <ul>
+            <li>Cancellations &gt;60 days: Refund minus 50% deposit</li>
+            <li>&lt;60 days: No refund</li>
+            <li>Refunds exclude bank/FX charges</li>
+          </ul>
+          <h3>Damage &amp; Liability</h3>
+          <ul>
+            <li>Covered up to USD$500 via Truvi Insurance</li>
+            <li>You are responsible for any additional damages or losses</li>
+          </ul>
+          <h3>House Rules</h3>
+          <ul>
+            <li>No more than 2 guests per room</li>
+            <li>No events, parties, or indoor smoking</li>
+            <li>Visitors: max 2 allowed during the day only</li>
+            <li>Check-In: 3 PM | Check-Out: 11 AM</li>
+            <li>Maintain property as found – clean and damage-free</li>
+            <li>You're responsible for bank fees or exchange rate differences</li>
+          </ul>
+          <h3>Additional Info</h3>
+          <ul>
+            <li>Concierge services (e.g., groceries, transport) at guest's cost</li>
+            <li>Rental Agent not liable for injuries, personal loss, or utility failures</li>
+            <li>Breach of terms may lead to eviction without refund</li>
+            <li>If double-booked, similar options or full refund offered</li>
+          </ul>
+          <h3>Legal Note</h3>
+          <ul>
+            <li>Agreement governed by Barbados law</li>
+            <li>Rental Agent not liable for claims, damages, or legal disputes</li>
+          </ul>
+        </div>
       </div>
 
       <!-- RIGHT SIDEBAR -->
@@ -689,7 +773,22 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
     document.body.style.overflow = "";
   });
 
-  // Fetch pricing and fill the breakdown table
+  // Terms modal
+  document.getElementById("frb-terms-link").addEventListener("click", function (e) {
+    e.preventDefault();
+    document.getElementById("frb-terms-modal").classList.add("open");
+  });
+  document.getElementById("frb-terms-modal-close").addEventListener("click", function () {
+    document.getElementById("frb-terms-modal").classList.remove("open");
+  });
+  document.getElementById("frb-terms-modal").addEventListener("click", function (e) {
+    if (e.target === this) this.classList.remove("open");
+  });
+  // Hide error when checkbox toggled
+  document.getElementById("frb-terms").addEventListener("change", function () {
+    document.getElementById("frb-terms-error").classList.remove("show");
+  });
+
   let totalWithTax = null;
   let deposit50 = null;
   const INSURANCE = 35;
@@ -754,6 +853,17 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
   // Form submission
   document.getElementById("frb-bk-form").addEventListener("submit", async function (ev) {
     ev.preventDefault();
+
+    // Terms validation
+    const termsCheckbox = document.getElementById("frb-terms");
+    const termsError = document.getElementById("frb-terms-error");
+    if (!termsCheckbox.checked) {
+      termsError.classList.add("show");
+      termsCheckbox.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+    termsError.classList.remove("show");
+
     const btn = document.getElementById("frb-bk-submit");
     btn.disabled = true;
     btn.textContent = "Processing…";
