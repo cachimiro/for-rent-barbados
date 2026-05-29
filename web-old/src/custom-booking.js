@@ -551,10 +551,8 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
         <a href="/index.html" class="frb-bk-header-logo"><img src="/wp-content/uploads/2021/10/LOGO-FRB-10.svg" alt="For Rent Barbados"></a>
         <nav class="frb-bk-nav">
           <a href="/index.html">Home</a>
-          <a href="/rentals/index.html">Rentals</a>
-          <a href="/concierge/index.html">Concierge</a>
-          <a href="/testimonials/index.html">Testimonials</a>
-          <a href="/contact/index.html">Contact</a>
+          <a href="/availability-search-2/index.html">Rentals</a>
+          <a href="/contact-us/index.html">Contact</a>
           <a href="/volunteer/index.html" class="frb-nav-outline">Volunteer</a>
         </nav>
       </div>
@@ -633,11 +631,11 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
         <div class="frb-svc-item"><input type="checkbox" id="frb-svc-chef"><label for="frb-svc-chef">Private Chef / Cook Services <em>(Price on Request)</em></label></div>
         <div class="frb-svc-item"><input type="checkbox" id="frb-svc-grocery"><label for="frb-svc-grocery">Grocery Shopping &amp; Delivery <em>(Price on Request)</em></label></div>
 
-        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-airport-out"><label for="frb-svc-airport-out">Property to Airport Transfers ( <a href="https://forrentbarbados.com/airport-transfers/" target="_blank" class="frb-svc-link">Fill Booking Form</a> )</label></div>
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-airport-out"><label for="frb-svc-airport-out">Property to Airport Transfers ( <a href="/contact-us/index.html" target="_blank" class="frb-svc-link">Fill Booking Form</a> )</label></div>
         <p class="frb-svc-sub red">Please visit the above link to fill out the form for Airport Transfers</p>
         <p class="frb-svc-sub">You won't be charged yet.</p>
 
-        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-airport-in"><label for="frb-svc-airport-in">Airport to Property Transfers ( <a href="https://forrentbarbados.com/airport-transfers/" target="_blank" class="frb-svc-link">Fill Booking Form</a> )</label></div>
+        <div class="frb-svc-item"><input type="checkbox" id="frb-svc-airport-in"><label for="frb-svc-airport-in">Airport to Property Transfers ( <a href="/contact-us/index.html" target="_blank" class="frb-svc-link">Fill Booking Form</a> )</label></div>
         <p class="frb-svc-sub red">Please visit the above link to fill out the form for Airport Transfers</p>
         <p class="frb-svc-sub">You won't be charged yet.</p>
 
