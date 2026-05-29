@@ -909,12 +909,17 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
         } else if (!info.useNights) {
           days = 1;
         }
-        svcTotal += info.perDay * days;
+        const lineTotal = info.perDay * days;
+        svcTotal += lineTotal;
+        console.log('[FRB] Service price:', cbId, info.perDay, '×', days, '=', lineTotal);
       }
     }
 
+    console.log('[FRB] svcTotal:', svcTotal, 'baseGrandTotal:', baseGrandTotal);
+
     const fmt = (v) => "$" + v.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     const svcEl = document.getElementById('frb-pr-svc-total');
+    console.log('[FRB] svcEl exists:', !!svcEl);
     if (svcEl) svcEl.textContent = fmt(svcTotal);
 
     // Update grand total, deposit, and payment total
@@ -925,8 +930,11 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
 
       const gtEl = document.getElementById('frb-pr-grand-total');
       const ptEl = document.getElementById('frb-pay-total');
+      console.log('[FRB] Updating total to:', fmt(totalWithTax), 'gtEl:', !!gtEl, 'ptEl:', !!ptEl);
       if (gtEl) gtEl.textContent = fmt(totalWithTax);
       if (ptEl) ptEl.textContent = fmt(totalWithTax);
+    } else {
+      console.log('[FRB] baseGrandTotal is 0, not updating total');
     }
   }
 
