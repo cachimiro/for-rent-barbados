@@ -98,8 +98,11 @@ export default function BookingWidgetForm({
 
   const seasonalRate = getSeasonalRate(property, checkIn);
   const displayNightlyRate = seasonalRate ?? minPrice;
-  const baseTotal = apiTotal ?? (seasonalRate ? seasonalRate * nights : null);
-  const totalWithTax = baseTotal ? baseTotal * (1 + TAX_RATE) : null;
+  // Always fall back to local rate × nights if API doesn't return a total
+  const nightlyForCalc = seasonalRate ?? minPrice;
+  const baseTotal = apiTotal ?? (nights > 0 ? nightlyForCalc * nights : null);
+  const taxAmount = baseTotal ? baseTotal * TAX_RATE : null;
+  const totalWithTax = baseTotal && taxAmount ? baseTotal + taxAmount : null;
   const hasPropertyId = Boolean(PROPERTY_MAP[property.slug]);
 
   // Slug used in bookingUrl below
@@ -159,7 +162,7 @@ export default function BookingWidgetForm({
           letterSpacing: "1px",
         }}
       >
-        {checkIn && checkOut ? "Prices start at:" : "Starting from"}
+        {checkIn && checkOut ? "Seasonal rate:" : "Starting from"}
       </p>
       <p
         style={{
@@ -194,41 +197,58 @@ export default function BookingWidgetForm({
         </p>
       )}
 
-      {/* Total with tax */}
-      {totalWithTax && nights > 0 && (
-        <>
-          <p
+      {/* Price breakdown */}
+      {nights > 0 && baseTotal && totalWithTax && (
+        <div
+          style={{
+            borderTop: "1px solid #EAEAEA",
+            marginTop: 12,
+            paddingTop: 12,
+            marginBottom: 20,
+          }}
+        >
+          <div
             style={{
+              display: "flex",
+              justifyContent: "space-between",
+              fontFamily: "var(--font-montserrat), sans-serif",
+              fontSize: 13,
+              color: "#555",
+              marginBottom: 6,
+            }}
+          >
+            <span>${nightlyForCalc.toLocaleString()} × {nights} night{nights !== 1 ? "s" : ""}</span>
+            <span>${baseTotal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              fontFamily: "var(--font-montserrat), sans-serif",
+              fontSize: 13,
+              color: "#555",
+              marginBottom: 10,
+            }}
+          >
+            <span>Taxes &amp; fees (17.5%)</span>
+            <span>${taxAmount!.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
               fontFamily: "var(--font-roboto-slab), serif",
               fontSize: 18,
               fontWeight: 600,
               color: "#363636",
-              marginBottom: 4,
+              borderTop: "1px solid #EAEAEA",
+              paddingTop: 10,
             }}
           >
-            ${totalWithTax.toLocaleString(undefined, { maximumFractionDigits: 2 })}
-            <span
-              style={{
-                fontFamily: "var(--font-montserrat), sans-serif",
-                fontSize: 13,
-                fontWeight: 400,
-                color: "#888",
-              }}
-            >
-              {" "}for {nights} night{nights !== 1 ? "s" : ""}
-            </span>
-          </p>
-          <p
-            style={{
-              fontFamily: "var(--font-montserrat), sans-serif",
-              fontSize: 11,
-              color: "#aaa",
-              marginBottom: 20,
-            }}
-          >
-            (includes taxes and fees)
-          </p>
-        </>
+            <span>Total</span>
+            <span>${totalWithTax.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+          </div>
+        </div>
       )}
 
       {/* Date fields — synced with calendar */}
