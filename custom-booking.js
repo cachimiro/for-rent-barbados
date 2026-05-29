@@ -594,6 +594,8 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
           <tr class="frb-pr-bold"><td>Subtotal</td><td id="frb-pr-subtotal">—</td></tr>
           <tr><td>Subtotal (excl. taxes)</td><td id="frb-pr-subtotal-ex">—</td></tr>
           <tr><td>Taxes</td><td id="frb-pr-taxes">—</td></tr>
+          <tr class="frb-pr-header"><td>Additional Services</td><td>Amount</td></tr>
+          <tr><td>Services Total</td><td id="frb-pr-svc-total">$0.00</td></tr>
           <tr class="frb-pr-total"><td>Total</td><td id="frb-pr-grand-total">Loading…</td></tr>
         </table>
 
@@ -883,6 +885,70 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
         document.getElementById("frb-pay-total").textContent = "Contact for price";
       });
   }
+
+  // --- SERVICE PRICE RECALCULATION ---
+  // Services with fixed per-day pricing
+  const SERVICE_PRICES = {
+    'frb-svc-cot': { perDay: 10, daysInputId: null, useNights: true },
+    'frb-svc-housekeeping': { perDay: 90, daysInputId: 'frb-svc-hk-days', useNights: false },
+  };
+  let baseGrandTotal = 0; // set after pricing loads
+
+  function recalcServiceTotal() {
+    let svcTotal = 0;
+    for (const [cbId, info] of Object.entries(SERVICE_PRICES)) {
+      const cb = document.getElementById(cbId);
+      if (cb && cb.checked) {
+        let days = nights;
+        if (info.daysInputId) {
+          days = parseInt(document.getElementById(info.daysInputId)?.value) || 1;
+        } else if (!info.useNights) {
+          days = 1;
+        }
+        svcTotal += info.perDay * days;
+      }
+    }
+
+    const fmt = (v) => "$" + v.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const svcEl = document.getElementById('frb-pr-svc-total');
+    if (svcEl) svcEl.textContent = fmt(svcTotal);
+
+    // Update grand total, deposit, and payment total
+    if (baseGrandTotal > 0) {
+      const newGrand = baseGrandTotal + svcTotal;
+      totalWithTax = Math.round(newGrand * 100) / 100;
+      deposit50 = Math.round(totalWithTax * 0.5 * 100) / 100;
+
+      const gtEl = document.getElementById('frb-pr-grand-total');
+      const ptEl = document.getElementById('frb-pay-total');
+      if (gtEl) gtEl.textContent = fmt(totalWithTax);
+      if (ptEl) ptEl.textContent = fmt(totalWithTax);
+    }
+  }
+
+  // Store base total once pricing loads (patch into the fetch callback)
+  const origGtEl = document.getElementById('frb-pr-grand-total');
+  if (origGtEl) {
+    const observer = new MutationObserver(() => {
+      const txt = origGtEl.textContent.replace(/[^\d.]/g, '');
+      const val = parseFloat(txt);
+      if (val > 0 && baseGrandTotal === 0) {
+        baseGrandTotal = val;
+      }
+    });
+    observer.observe(origGtEl, { childList: true, characterData: true, subtree: true });
+  }
+
+  // Attach listeners to service checkboxes
+  ['frb-svc-cot', 'frb-svc-housekeeping'].forEach(id => {
+    const cb = document.getElementById(id);
+    if (cb) cb.addEventListener('change', recalcServiceTotal);
+  });
+  // Attach listeners to day count inputs
+  ['frb-svc-hk-days'].forEach(id => {
+    const inp = document.getElementById(id);
+    if (inp) inp.addEventListener('input', recalcServiceTotal);
+  });
 
   document.getElementById("frb-bk-form").addEventListener("submit", async function (ev) {
     ev.preventDefault();
