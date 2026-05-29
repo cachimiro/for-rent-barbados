@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout – For Rent Barbados</title>
+  <meta name="description" content="Complete your booking payment for your Barbados vacation rental.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spinnaker&family=Montserrat:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Lato', sans-serif; color: #363636; background: #fff; }
+
+    /* HEADER + HERO */
+    .frb-hero-wrap {
+      background: linear-gradient(rgba(15,30,55,.50), rgba(15,30,55,.45)),
+                  url('/wp-content/uploads/2025/04/banner.jpg') center/cover no-repeat;
+      min-height: 260px; display: flex; flex-direction: column;
+    }
+    .frb-header { position: relative; z-index: 2; text-align: center; }
+    .frb-header-logo { display: block; margin: 0 auto; padding: 20px 0 10px; }
+    .frb-header-logo img { height: 50px; }
+    .frb-nav {
+      display: flex; justify-content: center; align-items: center;
+      gap: 8px; padding: 8px 20px 16px; flex-wrap: wrap;
+    }
+    .frb-nav a {
+      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500;
+      color: #fff; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1.5px; padding: 8px 14px; transition: opacity .2s;
+    }
+    .frb-nav a:hover { opacity: .7; }
+    .frb-nav a.frb-nav-outline { border: 1px solid #fff; padding: 6px 18px; }
+    .frb-hero {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      padding: 20px 40px 50px; text-align: center;
+    }
+    .frb-hero h1 {
+      font-family: 'Spinnaker', sans-serif; font-size: 42px; font-weight: 400;
+      color: #fff; margin: 0; letter-spacing: 1px; font-style: italic;
+    }
+
+    /* MAIN CONTENT */
+    .frb-checkout-content {
+      display: grid; grid-template-columns: 1fr 400px; gap: 60px;
+      max-width: 1200px; margin: 0 auto; padding: 50px 40px 80px;
+    }
+    @media (max-width: 960px) {
+      .frb-checkout-content { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 600px) {
+      .frb-checkout-content { padding: 30px 20px 60px; }
+    }
+
+    /* LEFT - BILLING FORM */
+    .frb-billing h2 {
+      font-family: 'Lato', sans-serif; font-size: 28px; font-weight: 300;
+      color: #363636; margin: 0 0 28px;
+    }
+    .frb-billing h3 {
+      font-family: 'Lato', sans-serif; font-size: 22px; font-weight: 300;
+      color: #363636; margin: 32px 0 20px;
+    }
+    .frb-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 16px; }
+    .frb-field { margin-bottom: 16px; }
+    .frb-field label {
+      display: block; font-family: 'Lato', sans-serif; font-size: 14px;
+      font-weight: 700; color: #363636; margin-bottom: 6px;
+    }
+    .frb-field label .req { color: #e74c3c; }
+    .frb-field input, .frb-field select, .frb-field textarea {
+      width: 100%; padding: 10px 14px; border: 1px solid #ccc; border-radius: 0;
+      font-family: 'Lato', sans-serif; font-size: 14px; color: #363636;
+      background: #fff; transition: border-color .2s;
+    }
+    .frb-field input:focus, .frb-field select:focus, .frb-field textarea:focus {
+      outline: none; border-color: #042E28;
+    }
+    .frb-field textarea { min-height: 100px; resize: vertical; }
+    .frb-field .frb-addr-line2 { margin-top: 8px; }
+
+    /* RIGHT - INVOICE SUMMARY */
+    .frb-invoice {
+      background: #fafafa; border: 1px solid #eee; padding: 32px 28px;
+      align-self: start; position: sticky; top: 20px;
+    }
+    .frb-invoice h2 {
+      font-family: 'Lato', sans-serif; font-size: 24px; font-weight: 400;
+      color: #363636; margin: 0 0 24px;
+    }
+    .frb-invoice-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+    .frb-invoice-table th {
+      text-align: left; font-family: 'Lato', sans-serif; font-size: 12px;
+      font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 1px;
+      padding: 8px 0; border-bottom: 2px solid #ddd;
+    }
+    .frb-invoice-table th:last-child { text-align: right; }
+    .frb-invoice-table td {
+      font-family: 'Lato', sans-serif; font-size: 14px; color: #363636;
+      padding: 14px 0; border-bottom: 1px solid #eee;
+    }
+    .frb-invoice-table td:last-child { text-align: right; font-weight: 700; }
+    .frb-invoice-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 0; border-bottom: 1px solid #eee;
+      font-family: 'Lato', sans-serif; font-size: 15px;
+    }
+    .frb-invoice-row.total {
+      font-size: 17px; font-weight: 700; border-bottom: none; padding-top: 16px;
+    }
+    .frb-invoice-row .label { color: #363636; }
+    .frb-invoice-row .value { color: #363636; font-weight: 700; }
+
+    /* PAYMENT METHOD */
+    .frb-pay-method-section { margin-top: 28px; }
+    .frb-pay-method-title {
+      font-family: 'Lato', sans-serif; font-size: 14px; font-weight: 400;
+      color: #363636; margin: 0 0 12px;
+    }
+    .frb-pay-logos {
+      display: flex; align-items: center; gap: 8px;
+      background: #f5f5f5; padding: 12px 16px; border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .frb-pay-logos .fygaro-logo {
+      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600;
+      color: #333; letter-spacing: 0.5px;
+    }
+    .frb-pay-logos .fygaro-logo img { height: 20px; vertical-align: middle; }
+    .frb-card-icon {
+      display: inline-block; width: 40px; height: 26px; border: 1px solid #ddd;
+      border-radius: 3px; background: #fff; text-align: center; line-height: 26px;
+      font-size: 10px; font-weight: 700; color: #1a1a6c;
+    }
+    .frb-card-icon.visa { color: #1a1a6c; }
+    .frb-card-icon.mc { color: #eb001b; }
+    .frb-pay-info {
+      background: #fffbe6; border: 1px solid #f5e6a3; padding: 12px 16px;
+      border-radius: 4px; font-size: 13px; line-height: 1.6; color: #666;
+      margin-bottom: 16px;
+    }
+    .frb-privacy-text {
+      font-size: 13px; color: #888; line-height: 1.7; margin-bottom: 24px;
+    }
+    .frb-proceed-btn {
+      display: block; width: 100%; padding: 16px; background: #042E28;
+      color: #fff; border: none; border-radius: 4px; cursor: pointer;
+      font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600;
+      letter-spacing: 1px; text-transform: uppercase; transition: background .2s;
+    }
+    .frb-proceed-btn:hover { background: #064e42; }
+    .frb-proceed-btn:disabled { background: #999; cursor: not-allowed; }
+
+    /* FOOTER */
+    .frb-footer { background: #042E28; padding: 32px 40px; text-align: center; }
+    .frb-footer p { font-family: 'Lato', sans-serif; font-size: 12px; color: rgba(255,255,255,.45); margin: 0; }
+
+    /* LOADING */
+    .frb-loading {
+      text-align: center; padding: 80px 20px; grid-column: 1 / -1;
+    }
+    .frb-loading p { font-size: 16px; color: #888; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER + HERO -->
+  <div class="frb-hero-wrap">
+    <div class="frb-header">
+      <a href="/index.html" class="frb-header-logo"><img src="/wp-content/uploads/2021/10/LOGO-FRB-10.svg" alt="For Rent Barbados"></a>
+      <nav class="frb-nav">
+        <a href="/index.html">Home</a>
+        <a href="/rentals/index.html">Rentals</a>
+        <a href="/concierge/index.html">Concierge</a>
+        <a href="/testimonials/index.html">Testimonials</a>
+        <a href="/contact/index.html">Contact</a>
+        <a href="/volunteer/index.html" class="frb-nav-outline">Volunteer</a>
+      </nav>
+    </div>
+    <div class="frb-hero">
+      <h1>Checkout</h1>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="frb-checkout-content" id="frb-checkout-content">
+    <div class="frb-loading" id="frb-checkout-loading">
+      <p>Loading booking details...</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="frb-footer">
+    <p>&copy; FOR RENT BARBADOS · ALL RIGHTS RESERVED</p>
+  </div>
+
+  <script>
+    const SUPABASE_URL = "https://bkqnviewrnafvvkqkhej.supabase.co";
+    const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJrcW52aWV3cm5hZnZ2a3FraGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc1MDUyMDMsImV4cCI6MjA2MzA4MTIwM30.QZfw839K9zACIhO9bCC-1-Aln_g8CcqYnO6hBCQQqnc";
+
+    // Country dropdown options
+    const COUNTRIES = ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Central African Republic","Chad","Chile","China","Colombia","Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","East Timor","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Israel","Italy","Ivory Coast","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia","Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger","Nigeria","North Korea","North Macedonia","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis","Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
+
+    function init() {
+      // Read booking data from sessionStorage
+      const raw = sessionStorage.getItem("frb_checkout");
+      if (!raw) {
+        document.getElementById("frb-checkout-content").innerHTML = `
+          <div class="frb-loading">
+            <p>No booking data found. Please go back and <a href="/index.html">start a new booking</a>.</p>
+          </div>`;
+        return;
+      }
+
+      const data = JSON.parse(raw);
+      const countryOpts = COUNTRIES.map(c =>
+        `<option value="${c}" ${c === (data.country || "United Kingdom") ? "selected" : ""}>${c}</option>`
+      ).join("");
+
+      const fmt = (v) => "$" + Number(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      document.getElementById("frb-checkout-content").innerHTML = `
+        <!-- LEFT - BILLING DETAILS -->
+        <div class="frb-billing">
+          <h2>Billing details</h2>
+          <form id="frb-checkout-form">
+            <div class="frb-row">
+              <div class="frb-field">
+                <label>First name <span class="req">*</span></label>
+                <input type="text" id="bill-fname" value="${data.firstName || ''}" required>
+              </div>
+              <div class="frb-field">
+                <label>Last name <span class="req">*</span></label>
+                <input type="text" id="bill-lname" value="${data.lastName || ''}" required>
+              </div>
+            </div>
+
+            <div class="frb-field">
+              <label>Country / Region <span class="req">*</span></label>
+              <select id="bill-country" required>${countryOpts}</select>
+            </div>
+
+            <div class="frb-field">
+              <label>Street address <span class="req">*</span></label>
+              <input type="text" id="bill-addr1" placeholder="House number and street name" required>
+              <input type="text" id="bill-addr2" class="frb-addr-line2" placeholder="Apartment, suite, unit, etc. (optional)">
+            </div>
+
+            <div class="frb-field">
+              <label>Town / City <span class="req">*</span></label>
+              <input type="text" id="bill-city" required>
+            </div>
+
+            <div class="frb-field">
+              <label>County (optional)</label>
+              <input type="text" id="bill-county">
+            </div>
+
+            <div class="frb-field">
+              <label>Postcode <span class="req">*</span></label>
+              <input type="text" id="bill-postcode" required>
+            </div>
+
+            <div class="frb-field">
+              <label>Phone (optional)</label>
+              <input type="tel" id="bill-phone" value="${data.phone || ''}">
+            </div>
+
+            <div class="frb-field">
+              <label>Email address <span class="req">*</span></label>
+              <input type="email" id="bill-email" value="${data.email || ''}" required>
+            </div>
+
+            <h3>Additional information</h3>
+            <div class="frb-field">
+              <label>Order notes (optional)</label>
+              <textarea id="bill-notes" placeholder="Notes about your order, e.g. special notes for delivery.">${data.message || ''}</textarea>
+            </div>
+          </form>
+        </div>
+
+        <!-- RIGHT - INVOICE SUMMARY -->
+        <div class="frb-invoice">
+          <h2>Invoice Summary</h2>
+          <table class="frb-invoice-table">
+            <thead>
+              <tr><th>BOOKING</th><th>SUBTOTAL</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>50% Deposit</td>
+                <td id="inv-deposit">${data.deposit50 ? fmt(data.deposit50) : 'Loading...'}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="frb-invoice-row">
+            <span class="label">Subtotal</span>
+            <span class="value" id="inv-subtotal">${data.deposit50 ? fmt(data.deposit50) : 'Loading...'}</span>
+          </div>
+          <div class="frb-invoice-row total">
+            <span class="label">Total</span>
+            <span class="value" id="inv-total">${data.deposit50 ? fmt(data.deposit50) : 'Loading...'}</span>
+          </div>
+
+          <div class="frb-pay-method-section">
+            <p class="frb-pay-method-title">Visa, Mastercard, or Debit Card</p>
+            <div class="frb-pay-logos">
+              <span class="fygaro-logo">&#9998; FYGARO</span>
+              <span class="frb-card-icon visa">VISA</span>
+              <span class="frb-card-icon mc">MC</span>
+            </div>
+            <div class="frb-pay-info">
+              Pay with your Visa, Mastercard, or Debit Card via Fygaro's secure checkout.
+            </div>
+            <p class="frb-privacy-text">
+              Your personal data will be used to process your order, support your experience throughout this website,
+              and for other purposes described in our privacy policy.
+            </p>
+            <button type="button" class="frb-proceed-btn" id="frb-proceed-btn">
+              Proceed with Payment
+            </button>
+          </div>
+        </div>
+      `;
+
+      // Handle proceed with payment
+      document.getElementById("frb-proceed-btn").addEventListener("click", async function () {
+        // Validate billing form
+        const form = document.getElementById("frb-checkout-form");
+        if (!form.reportValidity()) return;
+
+        const btn = this;
+        btn.disabled = true;
+        btn.textContent = "Processing...";
+
+        // Collect billing data
+        const billingData = {
+          ...data,
+          billingFirstName: document.getElementById("bill-fname").value.trim(),
+          billingLastName: document.getElementById("bill-lname").value.trim(),
+          billingCountry: document.getElementById("bill-country").value,
+          billingAddr1: document.getElementById("bill-addr1").value.trim(),
+          billingAddr2: document.getElementById("bill-addr2").value.trim(),
+          billingCity: document.getElementById("bill-city").value.trim(),
+          billingCounty: document.getElementById("bill-county").value.trim(),
+          billingPostcode: document.getElementById("bill-postcode").value.trim(),
+          billingPhone: document.getElementById("bill-phone").value.trim(),
+          billingEmail: document.getElementById("bill-email").value.trim(),
+          billingNotes: document.getElementById("bill-notes").value.trim(),
+        };
+
+        try {
+          // Call create-checkout to get Fygaro URL
+          const res = await fetch(`${SUPABASE_URL}/functions/v1/create-checkout`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${SUPABASE_ANON}`,
+            },
+            body: JSON.stringify(billingData),
+          });
+
+          const result = await res.json();
+
+          if (result.paymentUrl) {
+            // Store booking ref for payment-success page
+            sessionStorage.setItem("frb_booking_ref", result.bookingRef);
+            sessionStorage.setItem("frb_checkout_data", JSON.stringify(billingData));
+            // Redirect to Fygaro
+            window.location.href = result.paymentUrl;
+          } else {
+            throw new Error(result.error || "Failed to create checkout");
+          }
+        } catch (err) {
+          console.error("Checkout error:", err);
+          btn.disabled = false;
+          btn.textContent = "Proceed with Payment";
+          alert("Something went wrong. Please try again or contact us at maisha@forrentbarbados.com");
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>

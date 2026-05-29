@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Successful – For Rent Barbados</title>
+  <meta name="description" content="Your payment has been received. Your Barbados vacation rental is confirmed.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Spinnaker&family=Montserrat:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Lato', sans-serif; color: #363636; background: #fff; }
+    .frb-hero-wrap {
+      background: linear-gradient(rgba(15,30,55,.50), rgba(15,30,55,.45)),
+                  url('/wp-content/uploads/2025/04/banner.jpg') center/cover no-repeat;
+      min-height: 260px; display: flex; flex-direction: column;
+    }
+    .frb-header { position: relative; z-index: 2; text-align: center; }
+    .frb-header-logo { display: block; margin: 0 auto; padding: 20px 0 10px; }
+    .frb-header-logo img { height: 50px; }
+    .frb-nav {
+      display: flex; justify-content: center; align-items: center;
+      gap: 8px; padding: 8px 20px 16px; flex-wrap: wrap;
+    }
+    .frb-nav a {
+      font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 500;
+      color: #fff; text-decoration: none; text-transform: uppercase;
+      letter-spacing: 1.5px; padding: 8px 14px; transition: opacity .2s;
+    }
+    .frb-nav a:hover { opacity: .7; }
+    .frb-nav a.frb-nav-outline { border: 1px solid #fff; padding: 6px 18px; }
+    .frb-hero {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      padding: 20px 40px 50px; text-align: center;
+    }
+    .frb-hero h1 {
+      font-family: 'Spinnaker', sans-serif; font-size: 42px; font-weight: 400;
+      color: #fff; margin: 0; letter-spacing: 1px; font-style: italic;
+    }
+    .frb-confirm {
+      max-width: 800px; margin: 0 auto; padding: 60px 40px 80px; text-align: center;
+    }
+    .frb-confirm .chk {
+      width: 72px; height: 72px; border-radius: 50%; background: #042E28;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 28px; animation: popIn 0.4s ease-out;
+    }
+    @keyframes popIn { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+    .frb-confirm h2 {
+      font-family: 'Lato', sans-serif; font-size: 32px; font-weight: 300;
+      color: #363636; margin: 0 0 16px;
+    }
+    .frb-confirm p {
+      font-size: 16px; color: #666; line-height: 1.8; margin-bottom: 12px;
+    }
+    .frb-confirm .details-box {
+      background: #f9f9f9; border: 1px solid #eee; padding: 24px 32px;
+      margin: 32px 0; text-align: left; border-radius: 4px;
+    }
+    .frb-confirm .details-box h3 {
+      font-family: 'Lato', sans-serif; font-size: 16px; font-weight: 700;
+      color: #042E28; margin: 0 0 16px; text-transform: uppercase;
+      letter-spacing: 1px; border-bottom: 2px solid #042E28; padding-bottom: 8px;
+    }
+    .frb-confirm .details-box .row {
+      display: flex; justify-content: space-between; padding: 8px 0;
+      border-bottom: 1px solid #eee; font-size: 14px;
+    }
+    .frb-confirm .details-box .row:last-child { border-bottom: none; }
+    .frb-confirm .details-box .row .lbl { color: #888; }
+    .frb-confirm .details-box .row .val { color: #363636; font-weight: 700; }
+    .frb-confirm .btn-home {
+      display: inline-block; padding: 14px 40px; background: #042E28;
+      color: #fff; text-decoration: none; font-family: 'Montserrat', sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      border-radius: 4px; transition: background .2s; margin-top: 24px;
+    }
+    .frb-confirm .btn-home:hover { background: #064e42; }
+    .frb-processing { font-size: 16px; color: #888; text-align: center; padding: 80px 20px; }
+    .frb-error { color: #e74c3c; }
+    .frb-footer { background: #042E28; padding: 32px 40px; text-align: center; }
+    .frb-footer p { font-family: 'Lato', sans-serif; font-size: 12px; color: rgba(255,255,255,.45); margin: 0; }
+  </style>
+</head>
+<body>
+
+  <div class="frb-hero-wrap">
+    <div class="frb-header">
+      <a href="/index.html" class="frb-header-logo"><img src="/wp-content/uploads/2021/10/LOGO-FRB-10.svg" alt="For Rent Barbados"></a>
+      <nav class="frb-nav">
+        <a href="/index.html">Home</a>
+        <a href="/rentals/index.html">Rentals</a>
+        <a href="/concierge/index.html">Concierge</a>
+        <a href="/testimonials/index.html">Testimonials</a>
+        <a href="/contact/index.html">Contact</a>
+        <a href="/volunteer/index.html" class="frb-nav-outline">Volunteer</a>
+      </nav>
+    </div>
+    <div class="frb-hero">
+      <h1>Payment Confirmation</h1>
+    </div>
+  </div>
+
+  <div class="frb-confirm" id="frb-confirm">
+    <p class="frb-processing" id="frb-processing">Confirming your payment and securing your booking...</p>
+  </div>
+
+  <div class="frb-footer">
+    <p>&copy; FOR RENT BARBADOS · ALL RIGHTS RESERVED</p>
+  </div>
+
+  <script>
+    const SUPABASE_URL = "https://bkqnviewrnafvvkqkhej.supabase.co";
+    const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJrcW52aWV3cm5hZnZ2a3FraGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc1MDUyMDMsImV4cCI6MjA2MzA4MTIwM30.QZfw839K9zACIhO9bCC-1-Aln_g8CcqYnO6hBCQQqnc";
+
+    async function init() {
+      const container = document.getElementById("frb-confirm");
+
+      // Get Fygaro reference from URL params
+      const params = new URLSearchParams(window.location.search);
+      const fygaroRef = params.get("reference");
+      const bookingRef = sessionStorage.getItem("frb_booking_ref");
+      const checkoutDataRaw = sessionStorage.getItem("frb_checkout_data");
+
+      if (!bookingRef && !fygaroRef) {
+        container.innerHTML = `<p class="frb-processing frb-error">No payment information found. <a href="/index.html">Return to home</a></p>`;
+        return;
+      }
+
+      try {
+        // Call confirm-payment to verify payment, block dates, send emails
+        const res = await fetch(`${SUPABASE_URL}/functions/v1/confirm-payment`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${SUPABASE_ANON}`,
+          },
+          body: JSON.stringify({
+            fygaroReference: fygaroRef,
+            bookingRef: bookingRef,
+            checkoutData: checkoutDataRaw ? JSON.parse(checkoutDataRaw) : null,
+          }),
+        });
+
+        const result = await res.json();
+
+        if (result.ok) {
+          const d = result.booking || (checkoutDataRaw ? JSON.parse(checkoutDataRaw) : {});
+          const fmtLong = (dt) => {
+            try { return new Date(dt + "T00:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }); }
+            catch { return dt; }
+          };
+          const fmt = (v) => "$" + Number(v).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+          container.innerHTML = `
+            <div class="chk">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h2>Payment Successful!</h2>
+            <p>Your booking for <strong>${d.property || 'your property'}</strong> has been confirmed and the dates are now secured.</p>
+            <p>A confirmation email has been sent to <strong>${d.email || d.billingEmail || ''}</strong>.</p>
+
+            <div class="details-box">
+              <h3>Booking Details</h3>
+              <div class="row"><span class="lbl">Property</span><span class="val">${d.property || ''}</span></div>
+              <div class="row"><span class="lbl">Check-in</span><span class="val">${d.checkIn ? fmtLong(d.checkIn) : ''} (3:00 PM)</span></div>
+              <div class="row"><span class="lbl">Check-out</span><span class="val">${d.checkOut ? fmtLong(d.checkOut) : ''} (11:00 AM)</span></div>
+              <div class="row"><span class="lbl">Nights</span><span class="val">${d.nights || ''}</span></div>
+              <div class="row"><span class="lbl">Guest</span><span class="val">${d.firstName || d.billingFirstName || ''} ${d.lastName || d.billingLastName || ''}</span></div>
+              <div class="row"><span class="lbl">Deposit Paid</span><span class="val">${d.deposit50 ? fmt(d.deposit50) : ''}</span></div>
+              ${d.totalWithTax ? `<div class="row"><span class="lbl">Total</span><span class="val">${fmt(d.totalWithTax)}</span></div>` : ''}
+              ${fygaroRef ? `<div class="row"><span class="lbl">Payment Ref</span><span class="val">${fygaroRef}</span></div>` : ''}
+            </div>
+
+            <a href="/index.html" class="btn-home">Back to Home</a>
+          `;
+
+          // Clear session data
+          sessionStorage.removeItem("frb_checkout");
+          sessionStorage.removeItem("frb_booking_ref");
+          sessionStorage.removeItem("frb_checkout_data");
+        } else {
+          throw new Error(result.error || "Confirmation failed");
+        }
+      } catch (err) {
+        console.error("Confirm error:", err);
+        container.innerHTML = `
+          <div class="chk" style="background:#e67e22;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </div>
+          <h2>Payment Received</h2>
+          <p>Your payment has been received but we need to manually confirm your booking.</p>
+          <p>Our team will contact you within 24 hours at the email address you provided.</p>
+          <p>If you have any questions, please contact <a href="mailto:maisha@forrentbarbados.com">maisha@forrentbarbados.com</a></p>
+          <a href="/index.html" class="btn-home">Back to Home</a>
+        `;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>

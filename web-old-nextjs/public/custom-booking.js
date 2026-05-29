@@ -884,7 +884,6 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
       });
   }
 
-  // Form submission
   document.getElementById("frb-bk-form").addEventListener("submit", async function (ev) {
     ev.preventDefault();
 
@@ -917,7 +916,8 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
     });
     const couponCode = document.getElementById('frb-coupon')?.value?.trim() || '';
 
-    const payload = {
+    // Build checkout data
+    const checkoutData = {
       firstName: document.getElementById("frb-firstName").value.trim(),
       lastName:  document.getElementById("frb-lastName").value.trim(),
       email:     document.getElementById("frb-email").value.trim(),
@@ -927,44 +927,17 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
       children:  0,
       message:   document.getElementById("frb-message").value.trim(),
       property:  propertyName,
+      propertySlug: slug,
       checkIn, checkOut, nights, totalWithTax, deposit50,
       services: selectedServices,
       coupon: couponCode,
     };
 
-    try {
-      const res = await fetch(`${SUPABASE_URL}/functions/v1/booking-enquiry`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${SUPABASE_ANON}` },
-        body: JSON.stringify(payload),
-      });
-      if (!res.ok) throw new Error("fail");
-    } catch (err) {
-      const subj = encodeURIComponent("Booking Enquiry – " + propertyName);
-      const body = encodeURIComponent(
-        "Name: " + payload.firstName + " " + payload.lastName + "\n" +
-        "Email: " + payload.email + "\nPhone: " + payload.phone + "\nCountry: " + payload.country + "\n" +
-        "Property: " + propertyName + "\nCheck-in: " + checkIn + "\nCheck-out: " + checkOut + "\n" +
-        "Nights: " + nights + "\nAdults: " + payload.adults + "\n" +
-        "Total: $" + (totalWithTax || "TBD") + "\n\nNotes: " + payload.message
-      );
-      window.open("mailto:maisha@forrentbarbados.com?subject=" + subj + "&body=" + body, "_self");
-    }
+    // Store in sessionStorage for checkout page
+    sessionStorage.setItem("frb_checkout", JSON.stringify(checkoutData));
 
-    // Show confirmation
-    const fmtLong = (d) => { try { return new Date(d + "T00:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }); } catch { return d; } };
-    document.getElementById("frb-bk-content").innerHTML = `
-      <div class="frb-bk-confirm">
-        <div class="chk">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-        </div>
-        <h2>Thank You!</h2>
-        <p>Your booking enquiry for <strong>${propertyName}</strong> has been received.<br>
-        We'll review availability and get back to you within 24 hours with confirmation and payment details.</p>
-        <p><strong>${fmtLong(checkIn)}</strong> to <strong>${fmtLong(checkOut)}</strong> · ${nights} night${nights !== 1 ? "s" : ""}</p>
-        <a href="/index.html" class="btn-back">Back to Home</a>
-      </div>
-    `;
+    // Redirect to checkout page
+    window.location.href = "/checkout.html";
   });
 }
 
