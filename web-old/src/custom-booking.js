@@ -863,6 +863,7 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
 
           // Store base total for service price recalculation
           baseGrandTotal = totalWithTax;
+          console.log('[FRB] baseGrandTotal set to:', baseGrandTotal);
 
           const fmt = (v) => "$" + v.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
@@ -931,16 +932,23 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
 
   // baseGrandTotal is set directly in the pricing fetch .then() callback
 
-  // Attach listeners to service checkboxes
-  ['frb-svc-cot', 'frb-svc-housekeeping'].forEach(id => {
+  // Attach listeners to ALL service checkboxes
+  const allSvcIds = ['frb-svc-picnics','frb-svc-staging','frb-svc-nails','frb-svc-massage','frb-svc-hair','frb-svc-jetcar','frb-svc-yacht-private','frb-svc-yacht-shared','frb-svc-cot','frb-svc-reservations','frb-svc-chef','frb-svc-grocery','frb-svc-airport-out','frb-svc-airport-in','frb-svc-fasttrack','frb-svc-car-suv','frb-svc-car-sedan','frb-svc-housekeeping'];
+  allSvcIds.forEach(id => {
     const cb = document.getElementById(id);
-    if (cb) cb.addEventListener('change', recalcServiceTotal);
+    if (cb) {
+      cb.addEventListener('change', () => {
+        console.log('[FRB] Service toggled:', id, cb.checked, 'baseGrandTotal:', baseGrandTotal);
+        recalcServiceTotal();
+      });
+    }
   });
   // Attach listeners to day count inputs
-  ['frb-svc-hk-days'].forEach(id => {
+  ['frb-svc-hk-days', 'frb-svc-suv-days', 'frb-svc-sedan-days'].forEach(id => {
     const inp = document.getElementById(id);
     if (inp) inp.addEventListener('input', recalcServiceTotal);
   });
+  console.log('[FRB] Service listeners attached, version v13');
 
   document.getElementById("frb-bk-form").addEventListener("submit", async function (ev) {
     ev.preventDefault();
