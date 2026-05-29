@@ -827,6 +827,7 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
 
   let totalWithTax = null;
   let deposit50 = null;
+  let baseGrandTotal = 0;
   const INSURANCE = 35;
   const CLEANING = 75;
   const CARD_FEE_RATE = 0.06; // 6%
@@ -860,6 +861,9 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
           totalWithTax = Math.round(grandTotal * 100) / 100;
           deposit50 = Math.round(totalWithTax * 0.5 * 100) / 100;
 
+          // Store base total for service price recalculation
+          baseGrandTotal = totalWithTax;
+
           const fmt = (v) => "$" + v.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
           document.getElementById("frb-pr-accom-price").textContent = fmt(accomTotal);
@@ -892,7 +896,6 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
     'frb-svc-cot': { perDay: 10, daysInputId: null, useNights: true },
     'frb-svc-housekeeping': { perDay: 90, daysInputId: 'frb-svc-hk-days', useNights: false },
   };
-  let baseGrandTotal = 0; // set after pricing loads
 
   function recalcServiceTotal() {
     let svcTotal = 0;
@@ -926,18 +929,7 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
     }
   }
 
-  // Store base total once pricing loads (patch into the fetch callback)
-  const origGtEl = document.getElementById('frb-pr-grand-total');
-  if (origGtEl) {
-    const observer = new MutationObserver(() => {
-      const txt = origGtEl.textContent.replace(/[^\d.]/g, '');
-      const val = parseFloat(txt);
-      if (val > 0 && baseGrandTotal === 0) {
-        baseGrandTotal = val;
-      }
-    });
-    observer.observe(origGtEl, { childList: true, characterData: true, subtree: true });
-  }
+  // baseGrandTotal is set directly in the pricing fetch .then() callback
 
   // Attach listeners to service checkboxes
   ['frb-svc-cot', 'frb-svc-housekeeping'].forEach(id => {
