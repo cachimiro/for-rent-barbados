@@ -893,9 +893,27 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
 
   // --- SERVICE PRICE RECALCULATION ---
   // Services with fixed per-day pricing
+  // Services pricing: flat = one-time, perDay = daily rate
+  // perDay services multiply by nights or a custom day input
   const SERVICE_PRICES = {
-    'frb-svc-cot': { perDay: 10, daysInputId: null, useNights: true },
-    'frb-svc-housekeeping': { perDay: 90, daysInputId: 'frb-svc-hk-days', useNights: false },
+    'frb-svc-picnics':        { flat: 385, perDay: 0, daysInputId: null, useNights: false },
+    'frb-svc-staging':        { flat: 242, perDay: 0, daysInputId: null, useNights: false },
+    'frb-svc-nails':          { flat: 0,   perDay: 0, daysInputId: null, useNights: false },
+    'frb-svc-massage':        { flat: 0,   perDay: 0, daysInputId: null, useNights: false },
+    'frb-svc-hair':           { flat: 0,   perDay: 0, daysInputId: null, useNights: false },
+    'frb-svc-jetcar':         { flat: 0,   perDay: 0, daysInputId: null, useNights: false },
+    'frb-svc-yacht-private':  { flat: 2000,perDay: 0, daysInputId: null, useNights: false },
+    'frb-svc-yacht-shared':   { flat: 200, perDay: 0, daysInputId: null, useNights: false },
+    'frb-svc-cot':            { flat: 0,   perDay: 10, daysInputId: null, useNights: true },
+    'frb-svc-reservations':   { flat: 0,   perDay: 0, daysInputId: null, useNights: false },
+    'frb-svc-chef':           { flat: 0,   perDay: 0, daysInputId: null, useNights: false },
+    'frb-svc-grocery':        { flat: 0,   perDay: 0, daysInputId: null, useNights: false },
+    'frb-svc-airport-out':    { flat: 0,   perDay: 0, daysInputId: null, useNights: false },
+    'frb-svc-airport-in':     { flat: 0,   perDay: 0, daysInputId: null, useNights: false },
+    'frb-svc-fasttrack':      { flat: 0,   perDay: 0, daysInputId: null, useNights: false },
+    'frb-svc-car-suv':        { flat: 0,   perDay: 120, daysInputId: 'frb-svc-suv-days', useNights: false },
+    'frb-svc-car-sedan':      { flat: 0,   perDay: 85, daysInputId: 'frb-svc-sedan-days', useNights: false },
+    'frb-svc-housekeeping':   { flat: 0,   perDay: 90, daysInputId: 'frb-svc-hk-days', useNights: false },
   };
 
   function recalcServiceTotal() {
@@ -903,15 +921,18 @@ function showBookingOverlay(slug, checkIn, checkOut, adultsCount) {
     for (const [cbId, info] of Object.entries(SERVICE_PRICES)) {
       const cb = document.getElementById(cbId);
       if (cb && cb.checked) {
-        let days = nights;
-        if (info.daysInputId) {
-          days = parseInt(document.getElementById(info.daysInputId)?.value) || 1;
-        } else if (!info.useNights) {
-          days = 1;
+        let lineTotal = info.flat || 0;
+        if (info.perDay > 0) {
+          let days = nights;
+          if (info.daysInputId) {
+            days = parseInt(document.getElementById(info.daysInputId)?.value) || 1;
+          } else if (!info.useNights) {
+            days = 1;
+          }
+          lineTotal += info.perDay * days;
         }
-        const lineTotal = info.perDay * days;
         svcTotal += lineTotal;
-        console.log('[FRB] Service price:', cbId, info.perDay, '×', days, '=', lineTotal);
+        console.log('[FRB] Service price:', cbId, 'flat:', info.flat, 'perDay:', info.perDay, '=', lineTotal);
       }
     }
 
